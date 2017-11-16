@@ -27,27 +27,16 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mF1-3M-Sx2">
                                 <rect key="frame" x="129.5" y="20" width="113" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p5W-Dd-mPR">
                                 <rect key="frame" x="262.5" y="20" width="112.5" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="mF1-3M-Sx2" firstAttribute="height" secondItem="arG-4H-mKZ" secondAttribute="height" id="2iI-5g-Yvz"/>
-                            <constraint firstItem="mF1-3M-Sx2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4ki-Si-8rq"/>
-                            <constraint firstItem="p5W-Dd-mPR" firstAttribute="height" secondItem="mF1-3M-Sx2" secondAttribute="height" id="Efx-0r-ShL"/>
-                            <constraint firstItem="arG-4H-mKZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FSd-KB-3lb"/>
-                            <constraint firstItem="p5W-Dd-mPR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WbP-XE-dVX"/>
-                            <constraint firstItem="mF1-3M-Sx2" firstAttribute="width" secondItem="arG-4H-mKZ" secondAttribute="width" id="aGk-jr-Gsl"/>
-                            <constraint firstItem="p5W-Dd-mPR" firstAttribute="leading" secondItem="mF1-3M-Sx2" secondAttribute="trailing" constant="20" id="dbp-7X-kY4"/>
-                            <constraint firstItem="mF1-3M-Sx2" firstAttribute="leading" secondItem="arG-4H-mKZ" secondAttribute="trailing" constant="17" id="dhZ-ey-5QX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p5W-Dd-mPR" secondAttribute="trailing" id="dqy-t1-G4h"/>
-                            <constraint firstItem="p5W-Dd-mPR" firstAttribute="width" secondItem="mF1-3M-Sx2" secondAttribute="width" id="ksw-Yw-Xbl"/>
-                            <constraint firstItem="arG-4H-mKZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sbZ-hg-ezR"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="subviews">
