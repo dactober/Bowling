@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70B311FB83FDEEAF24E9F61F /* libPods-Bowling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */; };
+		84263DAD1FBC969600337D86 /* BWLScoreGridResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84263DAC1FBC969600337D86 /* BWLScoreGridResultView.xib */; };
+		84263DB01FBC9C5B00337D86 /* BWLScoreGridResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84263DAF1FBC9C5B00337D86 /* BWLScoreGridResultView.m */; };
 		842E55C91FBB4E8100F469D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55C81FBB4E8100F469D2 /* AppDelegate.m */; };
 		842E55CC1FBB4E8100F469D2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55CB1FBB4E8100F469D2 /* ViewController.m */; };
 		842E55CF1FBB4E8100F469D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842E55CD1FBB4E8100F469D2 /* Main.storyboard */; };
@@ -18,9 +21,16 @@
 		842E55EC1FBB4EC400F469D2 /* BWLScoreCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E21FBB4EC300F469D2 /* BWLScoreCard.m */; };
 		842E55ED1FBB4EC400F469D2 /* BWLFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E31FBB4EC300F469D2 /* BWLFrame.m */; };
 		842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E81FBB4EC300F469D2 /* BWLGameScore.m */; };
+		8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458A5281FBC351600EE164F /* BWLScoreGridView.m */; };
+		8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		172192EF7B7E95D1C2CDD995 /* Pods-Bowling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bowling.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bowling/Pods-Bowling.debug.xcconfig"; sourceTree = "<group>"; };
+		33048AAB7D193BD557230DAB /* Pods-Bowling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bowling.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bowling/Pods-Bowling.release.xcconfig"; sourceTree = "<group>"; };
+		84263DAC1FBC969600337D86 /* BWLScoreGridResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWLScoreGridResultView.xib; sourceTree = "<group>"; };
+		84263DAE1FBC9C5B00337D86 /* BWLScoreGridResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLScoreGridResultView.h; sourceTree = "<group>"; };
+		84263DAF1FBC9C5B00337D86 /* BWLScoreGridResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreGridResultView.m; sourceTree = "<group>"; };
 		842E55C41FBB4E8100F469D2 /* Bowling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bowling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842E55C71FBB4E8100F469D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		842E55C81FBB4E8100F469D2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -43,6 +53,10 @@
 		842E55E71FBB4EC300F469D2 /* BWLFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLFrameView.h; sourceTree = "<group>"; };
 		842E55E81FBB4EC300F469D2 /* BWLGameScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWLGameScore.m; sourceTree = "<group>"; };
 		842E55E91FBB4EC300F469D2 /* BWLGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLGameScore.h; sourceTree = "<group>"; };
+		8458A5271FBC351600EE164F /* BWLScoreGridView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLScoreGridView.h; sourceTree = "<group>"; };
+		8458A5281FBC351600EE164F /* BWLScoreGridView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreGridView.m; sourceTree = "<group>"; };
+		8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWLScoreGridViewXIB.xib; sourceTree = "<group>"; };
+		DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bowling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70B311FB83FDEEAF24E9F61F /* libPods-Bowling.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +77,7 @@
 				842E55C61FBB4E8100F469D2 /* Bowling */,
 				842E55C51FBB4E8100F469D2 /* Products */,
 				842E55DD1FBB4E8C00F469D2 /* Frameworks */,
+				E5EDA42537D734897AB23F13 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,21 +92,10 @@
 		842E55C61FBB4E8100F469D2 /* Bowling */ = {
 			isa = PBXGroup;
 			children = (
-				842E55E41FBB4EC300F469D2 /* BWLFrame.h */,
-				842E55E31FBB4EC300F469D2 /* BWLFrame.m */,
-				842E55E71FBB4EC300F469D2 /* BWLFrameView.h */,
-				842E55DF1FBB4EC200F469D2 /* BWLFrameView.m */,
-				842E55E91FBB4EC300F469D2 /* BWLGameScore.h */,
-				842E55E81FBB4EC300F469D2 /* BWLGameScore.m */,
-				842E55E51FBB4EC300F469D2 /* BWLResultController_BWLExtension.h */,
-				842E55E61FBB4EC300F469D2 /* BWLResultController.h */,
-				842E55E01FBB4EC200F469D2 /* BWLResultController.m */,
-				842E55E11FBB4EC300F469D2 /* BWLScoreCard.h */,
-				842E55E21FBB4EC300F469D2 /* BWLScoreCard.m */,
-				842E55C71FBB4E8100F469D2 /* AppDelegate.h */,
-				842E55C81FBB4E8100F469D2 /* AppDelegate.m */,
-				842E55CA1FBB4E8100F469D2 /* ViewController.h */,
-				842E55CB1FBB4E8100F469D2 /* ViewController.m */,
+				8489F6101FBDD4B0005156ED /* Delegate */,
+				8489F60F1FBDD456005156ED /* View */,
+				8489F60E1FBDD44E005156ED /* Controller */,
+				8489F60D1FBDD441005156ED /* Model */,
 				842E55CD1FBB4E8100F469D2 /* Main.storyboard */,
 				842E55D01FBB4E8100F469D2 /* Assets.xcassets */,
 				842E55D21FBB4E8100F469D2 /* LaunchScreen.storyboard */,
@@ -104,8 +109,67 @@
 			isa = PBXGroup;
 			children = (
 				842E55DE1FBB4E8C00F469D2 /* UIKit.framework */,
+				DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8489F60D1FBDD441005156ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				842E55E91FBB4EC300F469D2 /* BWLGameScore.h */,
+				842E55E81FBB4EC300F469D2 /* BWLGameScore.m */,
+				842E55E11FBB4EC300F469D2 /* BWLScoreCard.h */,
+				842E55E21FBB4EC300F469D2 /* BWLScoreCard.m */,
+				842E55E41FBB4EC300F469D2 /* BWLFrame.h */,
+				842E55E31FBB4EC300F469D2 /* BWLFrame.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8489F60E1FBDD44E005156ED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				842E55E51FBB4EC300F469D2 /* BWLResultController_BWLExtension.h */,
+				842E55E61FBB4EC300F469D2 /* BWLResultController.h */,
+				842E55E01FBB4EC200F469D2 /* BWLResultController.m */,
+				842E55CA1FBB4E8100F469D2 /* ViewController.h */,
+				842E55CB1FBB4E8100F469D2 /* ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8489F60F1FBDD456005156ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8458A5271FBC351600EE164F /* BWLScoreGridView.h */,
+				8458A5281FBC351600EE164F /* BWLScoreGridView.m */,
+				8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */,
+				84263DAC1FBC969600337D86 /* BWLScoreGridResultView.xib */,
+				84263DAE1FBC9C5B00337D86 /* BWLScoreGridResultView.h */,
+				84263DAF1FBC9C5B00337D86 /* BWLScoreGridResultView.m */,
+				842E55E71FBB4EC300F469D2 /* BWLFrameView.h */,
+				842E55DF1FBB4EC200F469D2 /* BWLFrameView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8489F6101FBDD4B0005156ED /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				842E55C71FBB4E8100F469D2 /* AppDelegate.h */,
+				842E55C81FBB4E8100F469D2 /* AppDelegate.m */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		E5EDA42537D734897AB23F13 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				172192EF7B7E95D1C2CDD995 /* Pods-Bowling.debug.xcconfig */,
+				33048AAB7D193BD557230DAB /* Pods-Bowling.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,9 +179,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 842E55DA1FBB4E8100F469D2 /* Build configuration list for PBXNativeTarget "Bowling" */;
 			buildPhases = (
+				123FF0665AE5B97D82FE865E /* [CP] Check Pods Manifest.lock */,
 				842E55C01FBB4E8100F469D2 /* Sources */,
 				842E55C11FBB4E8100F469D2 /* Frameworks */,
 				842E55C21FBB4E8100F469D2 /* Resources */,
+				8FF04C69E691F05C94250E53 /* [CP] Embed Pods Frameworks */,
+				FB329805DD2EBFAFFAF20971 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,10 +236,63 @@
 				842E55D41FBB4E8100F469D2 /* LaunchScreen.storyboard in Resources */,
 				842E55D11FBB4E8100F469D2 /* Assets.xcassets in Resources */,
 				842E55CF1FBB4E8100F469D2 /* Main.storyboard in Resources */,
+				8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */,
+				84263DAD1FBC969600337D86 /* BWLScoreGridResultView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		123FF0665AE5B97D82FE865E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bowling-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FF04C69E691F05C94250E53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bowling/Pods-Bowling-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB329805DD2EBFAFFAF20971 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bowling/Pods-Bowling-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		842E55C01FBB4E8100F469D2 /* Sources */ = {
@@ -180,6 +300,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				842E55EC1FBB4EC400F469D2 /* BWLScoreCard.m in Sources */,
+				8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */,
+				84263DB01FBC9C5B00337D86 /* BWLScoreGridResultView.m in Sources */,
 				842E55EB1FBB4EC400F469D2 /* BWLResultController.m in Sources */,
 				842E55EA1FBB4EC400F469D2 /* BWLFrameView.m in Sources */,
 				842E55CC1FBB4E8100F469D2 /* ViewController.m in Sources */,
@@ -318,6 +440,7 @@
 		};
 		842E55DB1FBB4E8100F469D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 172192EF7B7E95D1C2CDD995 /* Pods-Bowling.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -331,6 +454,7 @@
 		};
 		842E55DC1FBB4E8100F469D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33048AAB7D193BD557230DAB /* Pods-Bowling.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -16,9 +16,9 @@ IB_DESIGNABLE
 // An empty implementation adversely affects performance during animation.
  */
 - (void)drawRect:(CGRect)rect {
-    CGContextRef context= UIGraphicsGetCurrentContext();
+    //CGContextRef context= UIGraphicsGetCurrentContext();
     CGRect myFrame= self.bounds;
-    CGContextSetLineWidth(context, 10);
+    //CGContextSetLineWidth(context, 1);
     CGRectInset(myFrame, 5, 5);
     [_fillColor set];
     UIRectFrame(myFrame);

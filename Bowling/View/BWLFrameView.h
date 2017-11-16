@@ -11,4 +11,5 @@
 @interface BWLFrameView : UIView
 @property(nonatomic) IBInspectable NSInteger lineWidht;
 @property(nonatomic) IBInspectable UIColor* fillColor;
+@property(nonatomic,weak)IBOutlet UIView* frameView;
 @end
