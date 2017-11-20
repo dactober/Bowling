@@ -23,6 +23,7 @@
 		842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E81FBB4EC300F469D2 /* BWLGameScore.m */; };
 		8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458A5281FBC351600EE164F /* BWLScoreGridView.m */; };
 		8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */; };
+		8489F6131FBDDB23005156ED /* BWLScoreInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8489F6121FBDDB23005156ED /* BWLScoreInputView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		8458A5271FBC351600EE164F /* BWLScoreGridView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLScoreGridView.h; sourceTree = "<group>"; };
 		8458A5281FBC351600EE164F /* BWLScoreGridView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreGridView.m; sourceTree = "<group>"; };
 		8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWLScoreGridViewXIB.xib; sourceTree = "<group>"; };
+		8489F6111FBDDB23005156ED /* BWLScoreInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLScoreInputView.h; sourceTree = "<group>"; };
+		8489F6121FBDDB23005156ED /* BWLScoreInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreInputView.m; sourceTree = "<group>"; };
 		DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bowling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,6 +153,8 @@
 				84263DAF1FBC9C5B00337D86 /* BWLScoreGridResultView.m */,
 				842E55E71FBB4EC300F469D2 /* BWLFrameView.h */,
 				842E55DF1FBB4EC200F469D2 /* BWLFrameView.m */,
+				8489F6111FBDDB23005156ED /* BWLScoreInputView.h */,
+				8489F6121FBDDB23005156ED /* BWLScoreInputView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				84263DB01FBC9C5B00337D86 /* BWLScoreGridResultView.m in Sources */,
 				842E55EB1FBB4EC400F469D2 /* BWLResultController.m in Sources */,
 				842E55EA1FBB4EC400F469D2 /* BWLFrameView.m in Sources */,
+				8489F6131FBDDB23005156ED /* BWLScoreInputView.m in Sources */,
 				842E55CC1FBB4E8100F469D2 /* ViewController.m in Sources */,
 				842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */,
 				842E55ED1FBB4EC400F469D2 /* BWLFrame.m in Sources */,
