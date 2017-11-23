@@ -8,25 +8,50 @@
 
 #import "BWLResultController.h"
 #import "BWLResultController_BWLExtension.h"
-
+#import "CustomCellForResult.h"
+#import "BWLScoreCard.h"
 @interface BWLResultController ()
-
+@property (nonatomic, strong)NSArray *playersCards;
 @end
 
 @implementation BWLResultController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    UINib *nib = [UINib nibWithNibName:@"CustomCellForResult" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"ID"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
+- (id)initWithScoreCards:(NSArray *)playersCards {
+    self = [super init];
+    if (self) {
+        self.playersCards = playersCards;
+    }
+    return self;
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.playersCards.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *ID = @"ID";
+    CustomCellForResult *cell = (CustomCellForResult *)[tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
+    BWLScoreCard *scoreCard = self.playersCards[indexPath.row];
+    cell.title.text = scoreCard.playerName;
+    cell.score.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    return cell;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -34,14 +59,6 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

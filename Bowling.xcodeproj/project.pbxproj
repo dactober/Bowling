@@ -21,8 +21,16 @@
 		842E55EC1FBB4EC400F469D2 /* BWLScoreCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E21FBB4EC300F469D2 /* BWLScoreCard.m */; };
 		842E55ED1FBB4EC400F469D2 /* BWLFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E31FBB4EC300F469D2 /* BWLFrame.m */; };
 		842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E81FBB4EC300F469D2 /* BWLGameScore.m */; };
+		844456C61FC6CF8200048C50 /* CustomCellForResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 844456C41FC6CF8200048C50 /* CustomCellForResult.m */; };
+		844456C71FC6CF8200048C50 /* CustomCellForResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844456C51FC6CF8200048C50 /* CustomCellForResult.xib */; };
 		8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458A5281FBC351600EE164F /* BWLScoreGridView.m */; };
 		8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */; };
+		846A84421FC4799E00AB67F6 /* BWLButtonsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */; };
+		847C9CC91FC57C3900393001 /* BWLRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C9CC81FC57C3900393001 /* BWLRegistrationController.m */; };
+		847C9CCD1FC5910600393001 /* CustomCellForTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C9CCB1FC5910600393001 /* CustomCellForTextField.m */; };
+		847C9CD21FC5913B00393001 /* CustomCellForButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C9CD01FC5913B00393001 /* CustomCellForButton.m */; };
+		848841591FC41E4B0030525F /* BWLTopButtonsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 848841581FC41E4B0030525F /* BWLTopButtonsComponent.m */; };
+		8488415C1FC426530030525F /* BWLBottomButonsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488415B1FC426530030525F /* BWLBottomButonsComponent.m */; };
 		8489F6131FBDDB23005156ED /* BWLScoreInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8489F6121FBDDB23005156ED /* BWLScoreInputView.m */; };
 /* End PBXBuildFile section */
 
@@ -54,9 +62,24 @@
 		842E55E71FBB4EC300F469D2 /* BWLFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLFrameView.h; sourceTree = "<group>"; };
 		842E55E81FBB4EC300F469D2 /* BWLGameScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWLGameScore.m; sourceTree = "<group>"; };
 		842E55E91FBB4EC300F469D2 /* BWLGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLGameScore.h; sourceTree = "<group>"; };
+		844456C31FC6CF8200048C50 /* CustomCellForResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCellForResult.h; sourceTree = "<group>"; };
+		844456C41FC6CF8200048C50 /* CustomCellForResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCellForResult.m; sourceTree = "<group>"; };
+		844456C51FC6CF8200048C50 /* CustomCellForResult.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellForResult.xib; sourceTree = "<group>"; };
 		8458A5271FBC351600EE164F /* BWLScoreGridView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLScoreGridView.h; sourceTree = "<group>"; };
 		8458A5281FBC351600EE164F /* BWLScoreGridView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreGridView.m; sourceTree = "<group>"; };
 		8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWLScoreGridViewXIB.xib; sourceTree = "<group>"; };
+		846A84401FC4799E00AB67F6 /* BWLButtonsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLButtonsComponent.h; sourceTree = "<group>"; };
+		846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLButtonsComponent.m; sourceTree = "<group>"; };
+		847C9CC71FC57C3900393001 /* BWLRegistrationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLRegistrationController.h; sourceTree = "<group>"; };
+		847C9CC81FC57C3900393001 /* BWLRegistrationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLRegistrationController.m; sourceTree = "<group>"; };
+		847C9CCA1FC5910600393001 /* CustomCellForTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCellForTextField.h; sourceTree = "<group>"; };
+		847C9CCB1FC5910600393001 /* CustomCellForTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCellForTextField.m; sourceTree = "<group>"; };
+		847C9CCF1FC5913B00393001 /* CustomCellForButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCellForButton.h; sourceTree = "<group>"; };
+		847C9CD01FC5913B00393001 /* CustomCellForButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCellForButton.m; sourceTree = "<group>"; };
+		848841571FC41E4B0030525F /* BWLTopButtonsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLTopButtonsComponent.h; sourceTree = "<group>"; };
+		848841581FC41E4B0030525F /* BWLTopButtonsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLTopButtonsComponent.m; sourceTree = "<group>"; };
+		8488415A1FC426530030525F /* BWLBottomButonsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLBottomButonsComponent.h; sourceTree = "<group>"; };
+		8488415B1FC426530030525F /* BWLBottomButonsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLBottomButonsComponent.m; sourceTree = "<group>"; };
 		8489F6111FBDDB23005156ED /* BWLScoreInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLScoreInputView.h; sourceTree = "<group>"; };
 		8489F6121FBDDB23005156ED /* BWLScoreInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreInputView.m; sourceTree = "<group>"; };
 		DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bowling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +127,12 @@
 				842E55D21FBB4E8100F469D2 /* LaunchScreen.storyboard */,
 				842E55D51FBB4E8100F469D2 /* Info.plist */,
 				842E55D61FBB4E8100F469D2 /* main.m */,
+				848841571FC41E4B0030525F /* BWLTopButtonsComponent.h */,
+				848841581FC41E4B0030525F /* BWLTopButtonsComponent.m */,
+				8488415A1FC426530030525F /* BWLBottomButonsComponent.h */,
+				8488415B1FC426530030525F /* BWLBottomButonsComponent.m */,
+				846A84401FC4799E00AB67F6 /* BWLButtonsComponent.h */,
+				846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */,
 			);
 			path = Bowling;
 			sourceTree = "<group>";
@@ -138,6 +167,8 @@
 				842E55E01FBB4EC200F469D2 /* BWLResultController.m */,
 				842E55CA1FBB4E8100F469D2 /* ViewController.h */,
 				842E55CB1FBB4E8100F469D2 /* ViewController.m */,
+				847C9CC71FC57C3900393001 /* BWLRegistrationController.h */,
+				847C9CC81FC57C3900393001 /* BWLRegistrationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -155,6 +186,13 @@
 				842E55DF1FBB4EC200F469D2 /* BWLFrameView.m */,
 				8489F6111FBDDB23005156ED /* BWLScoreInputView.h */,
 				8489F6121FBDDB23005156ED /* BWLScoreInputView.m */,
+				847C9CCA1FC5910600393001 /* CustomCellForTextField.h */,
+				847C9CCB1FC5910600393001 /* CustomCellForTextField.m */,
+				847C9CCF1FC5913B00393001 /* CustomCellForButton.h */,
+				847C9CD01FC5913B00393001 /* CustomCellForButton.m */,
+				844456C31FC6CF8200048C50 /* CustomCellForResult.h */,
+				844456C41FC6CF8200048C50 /* CustomCellForResult.m */,
+				844456C51FC6CF8200048C50 /* CustomCellForResult.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				842E55D41FBB4E8100F469D2 /* LaunchScreen.storyboard in Resources */,
+				844456C71FC6CF8200048C50 /* CustomCellForResult.xib in Resources */,
 				842E55D11FBB4E8100F469D2 /* Assets.xcassets in Resources */,
 				842E55CF1FBB4E8100F469D2 /* Main.storyboard in Resources */,
 				8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */,
@@ -304,8 +343,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847C9CD21FC5913B00393001 /* CustomCellForButton.m in Sources */,
 				842E55EC1FBB4EC400F469D2 /* BWLScoreCard.m in Sources */,
 				8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */,
+				8488415C1FC426530030525F /* BWLBottomButonsComponent.m in Sources */,
 				84263DB01FBC9C5B00337D86 /* BWLScoreGridResultView.m in Sources */,
 				842E55EB1FBB4EC400F469D2 /* BWLResultController.m in Sources */,
 				842E55EA1FBB4EC400F469D2 /* BWLFrameView.m in Sources */,
@@ -313,7 +354,12 @@
 				842E55CC1FBB4E8100F469D2 /* ViewController.m in Sources */,
 				842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */,
 				842E55ED1FBB4EC400F469D2 /* BWLFrame.m in Sources */,
+				848841591FC41E4B0030525F /* BWLTopButtonsComponent.m in Sources */,
+				846A84421FC4799E00AB67F6 /* BWLButtonsComponent.m in Sources */,
 				842E55D71FBB4E8100F469D2 /* main.m in Sources */,
+				847C9CC91FC57C3900393001 /* BWLRegistrationController.m in Sources */,
+				844456C61FC6CF8200048C50 /* CustomCellForResult.m in Sources */,
+				847C9CCD1FC5910600393001 /* CustomCellForTextField.m in Sources */,
 				842E55C91FBB4E8100F469D2 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

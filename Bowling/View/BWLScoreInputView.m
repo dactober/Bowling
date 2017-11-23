@@ -18,8 +18,7 @@
         [myButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [myButton addTarget:self  action:@selector(pressButton:) forControlEvents:UIControlEventTouchUpInside];
         [myButton setTitle:title forState:UIControlStateNormal];
-        [myButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        //[myButton sizeToFit];
+        [myButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self addSubview:myButton];
         [self addConstraintForButton:myButton];
     }

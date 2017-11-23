@@ -10,7 +10,7 @@
 
 @interface BWLScoreCard : NSObject
 @property (nonatomic,copy)NSString* playerName;
-@property(nonatomic)NSInteger score;
+@property (nonatomic)NSInteger score;
 + (NSString*)title;
 - (void)setPlayerName:(NSString *)name;
 - (void)addScore:(NSInteger)score;
