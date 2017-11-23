@@ -24,8 +24,8 @@
 }
 
 - (void)buttonTouch {
-    if (self.actionBlock != nil) {
-        self.actionBlock();
+    if (self.buttonActionBlock != nil) {
+        self.buttonActionBlock();
     }
 }
 

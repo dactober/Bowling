@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^ActionBlock)(void);
+typedef void (^ButtonActionBlock)(void);
 
 @interface CustomCellForButton : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *addPlayerButton;
-@property (nonatomic, copy) ActionBlock actionBlock;
+@property (nonatomic, copy) ButtonActionBlock buttonActionBlock;
 @end

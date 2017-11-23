@@ -28,8 +28,8 @@
 }
 
 - (void)textChange {
-    if (self.actionBlock != nil) {
-        self.actionBlock();
+    if (self.textEditingActionBlock != nil) {
+        self.textEditingActionBlock(self.textField.text);
     }
 }
 @end

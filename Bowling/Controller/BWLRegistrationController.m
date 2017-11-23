@@ -11,69 +11,56 @@
 #import "CustomCellForTextField.h"
 #import "CustomCellForButton.h"
 #import "BWLResultController.h"
+
+enum RowType {
+    RowTypePlayer = -1,
+    RowTypeTextField,
+    RowTypeButton,
+    
+    RowTypeCount
+};
+
 @interface BWLRegistrationController ()
+
 @property (weak, nonatomic) IBOutlet UITableView *registrationTableView;
-@property (nonatomic, strong) NSMutableArray *players;
 @property (nonatomic, strong) NSMutableArray *playersCards;
+@property (nonatomic, strong) NSDictionary *rowTypeMapping;
+
 @end
 
 @implementation BWLRegistrationController
-enum RowType {
-    RowTypePlayer = -1,
-    RowTypeTextField ,
-    RowTypeButton ,
-    count};
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.players = [NSMutableArray new];
     self.playersCards = [NSMutableArray new];
-    self.registrationTableView.tableFooterView = [[UIView alloc] init];
-    // Do any additional setup after loading the view.
-}
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.players.count + count;
+- (NSDictionary *)rowTypeMapping {
+    if (!_rowTypeMapping) {
+        _rowTypeMapping = @{[NSNumber numberWithInt:RowTypeTextField] : @"MyIDForText",
+                            [NSNumber numberWithInt:RowTypeButton] : @"MyIDForButton"};
+    }
+    return _rowTypeMapping;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *textFieldIdentifier = @"MyIDForText";
-    static NSString *buttonIdentifier = @"MyIDForButton";
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.playersCards.count + RowTypeCount;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     enum RowType kindOfCell = [self kindOfCell:indexPath];
     switch (kindOfCell) {
         case RowTypePlayer: {
-            CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:textFieldIdentifier forIndexPath:indexPath];
-            cell.textField.text = [NSString stringWithFormat:@"%@",self.players[indexPath.row]] ;
+            CustomCellForTextField *cell = [self createCellForPlayer:tableView andIndexPath:indexPath];
             return cell;
-            break;
         }
         case RowTypeTextField: {
-            CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:textFieldIdentifier forIndexPath:indexPath];
-            __weak typeof(self) _self_weak = self;
-            
-            [cell setActionBlock:^{
-                NSIndexPath *indexPathForNextRow = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0];
-                [_self_weak enableButton:indexPathForNextRow];
-            }];
+            CustomCellForTextField *cell = [self createCellForTextField:tableView andIndexPath:indexPath];
             return cell;
-            break;
         }
         case RowTypeButton: {
-            CustomCellForButton *cell = (CustomCellForButton *)[tableView dequeueReusableCellWithIdentifier:buttonIdentifier forIndexPath:indexPath];
-            cell.addPlayerButton.enabled = NO;
-            __weak typeof(self) _self_weak = self;
-            [cell setActionBlock:^{
-                NSIndexPath *indexPathForPrevRow = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:0];
-                [_self_weak addPlayer:indexPathForPrevRow];
-                
-            }];
+           CustomCellForButton *cell = [self createCellForButton:tableView andIndexPath:indexPath];
             return cell;
-            break;
         }
         default:
             break;
@@ -82,48 +69,72 @@ enum RowType {
     
 }
 
+- (CustomCellForTextField *)createCellForTextField:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath {
+        CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[[NSNumber numberWithInt:RowTypeTextField]]  forIndexPath:indexPath];
+        [self setActionBlockForTextField:cell andindexPath:indexPath];
+        return cell;
+}
+
+- (CustomCellForTextField *)createCellForPlayer:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath {
+    CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[[NSNumber numberWithInt:RowTypeTextField]] forIndexPath:indexPath];
+    BWLScoreCard *scoreCard = self.playersCards[indexPath.row];
+    cell.textField.text = [NSString stringWithFormat:@"%@",scoreCard.playerName] ;
+    return cell;
+}
+
+- (CustomCellForButton *)createCellForButton:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath {
+    CustomCellForButton *cell = (CustomCellForButton *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[[NSNumber numberWithInt:RowTypeButton]]  forIndexPath:indexPath];
+    cell.addPlayerButton.enabled = NO;
+    [self setActionBlockForButton:cell andindexPath:indexPath];
+    return cell;
+}
+
+- (void)setActionBlockForTextField:(CustomCellForTextField *)cell andindexPath:(NSIndexPath *)indexPath{
+        __weak typeof(self) _self_weak = self;
+        [cell setTextEditingActionBlock:^(NSString *text){
+            NSIndexPath *indexPathForNextRow = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0];
+            [_self_weak enableButton:indexPathForNextRow textLenght:text.length];
+        }];
+    
+}
+
+- (void)setActionBlockForButton:(CustomCellForButton *)cell andindexPath:(NSIndexPath *)indexPath {
+    __weak typeof(self) _self_weak = self;
+    [cell setButtonActionBlock:^{
+        NSIndexPath *indexPathForPrevRow = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:0];
+        [_self_weak addPlayer:indexPathForPrevRow];
+    }];
+}
+
 - (enum RowType)kindOfCell:(NSIndexPath *)indexPath {
-    if (indexPath.row < self.players.count) {
+    if (indexPath.row < self.playersCards.count) {
         return RowTypePlayer;
-    } else if (indexPath.row == self.players.count) {
+    } else if (indexPath.row == self.playersCards.count) {
         return RowTypeTextField;
     } else {
         return RowTypeButton;
     }
 }
 
-- (void)enableButton:(NSIndexPath *)indexPath {
-    NSIndexPath *indexPathForPrevRow = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:0];
+- (void)enableButton:(NSIndexPath *)indexPath textLenght:(NSInteger)lenght {
     CustomCellForButton *cell = [self.registrationTableView cellForRowAtIndexPath:indexPath];
-    CustomCellForTextField *cellText = [self.registrationTableView cellForRowAtIndexPath:indexPathForPrevRow];
-    if([cellText.textField.text isEqualToString:@""]) {
-        cell.addPlayerButton.enabled = NO;
-    } else {
-        cell.addPlayerButton.enabled = YES;
-    }
+    cell.addPlayerButton.enabled = lenght > 0;
 }
 
 - (void)addPlayer:(NSIndexPath *)indexPath {
     CustomCellForTextField *cell = [self.registrationTableView cellForRowAtIndexPath:indexPath];
-    if (!([cell.textField.text isEqualToString:@"Enter name"] || [cell.textField.text isEqualToString:@""])) {
-        [self.players addObject:cell.textField.text];
-        [self.registrationTableView reloadData];
-    }
-    
+    [self createScoreCard:cell];
+    [self.registrationTableView reloadData];
 }
 
 - (IBAction)startGameButton:(id)sender {
-    [self createScoreCards];
     BWLResultController *res = [[BWLResultController alloc]initWithScoreCards:self.playersCards];
     [self.navigationController pushViewController:res animated:YES];
 }
 
-- (void)createScoreCards {
-    for (int i= 0; i < self.players.count; i++) {
-        BWLScoreCard *scoreCard = [[BWLScoreCard alloc]initWithName:self.players[i]];
-        [self.playersCards addObject:scoreCard];
-        NSLog(@"%@",scoreCard.playerName);
-    }
+- (void)createScoreCard:(CustomCellForTextField *)cell {
+    BWLScoreCard *scoreCard = [[BWLScoreCard alloc]initWithName:cell.textField.text];
+    [self.playersCards addObject:scoreCard];
 }
 
 - (void)didReceiveMemoryWarning {

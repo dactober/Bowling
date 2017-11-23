@@ -19,7 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"CustomCellForResult" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"ID"];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"ResultID"];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -44,8 +45,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ID = @"ID";
-    CustomCellForResult *cell = (CustomCellForResult *)[tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
+    static NSString *resultIdentificator = @"ResultID";
+    CustomCellForResult *cell = (CustomCellForResult *)[tableView dequeueReusableCellWithIdentifier:resultIdentificator forIndexPath:indexPath];
     BWLScoreCard *scoreCard = self.playersCards[indexPath.row];
     cell.title.text = scoreCard.playerName;
     cell.score.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];

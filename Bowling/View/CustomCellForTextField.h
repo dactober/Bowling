@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void (^ActionBlock)(void);
+typedef void (^TextEditingActionBlock)(NSString *);
 @interface CustomCellForTextField : UITableViewCell
 @property (strong, nonatomic) IBOutlet UITableViewCell *customCell;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (nonatomic, copy) ActionBlock actionBlock;
+@property (nonatomic, copy) TextEditingActionBlock textEditingActionBlock;
 @end
