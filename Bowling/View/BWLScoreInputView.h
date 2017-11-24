@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^ScoreInputActionBlock)(UIButton *);
 
 @interface BWLScoreInputView : UIView
+
 - (id)initWithTitle:(NSString *)title;
+@property (nonatomic, copy) ScoreInputActionBlock scoreInputAction;
+
 @end

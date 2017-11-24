@@ -11,7 +11,7 @@
 		84263DAD1FBC969600337D86 /* BWLScoreGridResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84263DAC1FBC969600337D86 /* BWLScoreGridResultView.xib */; };
 		84263DB01FBC9C5B00337D86 /* BWLScoreGridResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84263DAF1FBC9C5B00337D86 /* BWLScoreGridResultView.m */; };
 		842E55C91FBB4E8100F469D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55C81FBB4E8100F469D2 /* AppDelegate.m */; };
-		842E55CC1FBB4E8100F469D2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55CB1FBB4E8100F469D2 /* ViewController.m */; };
+		842E55CC1FBB4E8100F469D2 /* BWLGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55CB1FBB4E8100F469D2 /* BWLGameController.m */; };
 		842E55CF1FBB4E8100F469D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842E55CD1FBB4E8100F469D2 /* Main.storyboard */; };
 		842E55D11FBB4E8100F469D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842E55D01FBB4E8100F469D2 /* Assets.xcassets */; };
 		842E55D41FBB4E8100F469D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842E55D21FBB4E8100F469D2 /* LaunchScreen.storyboard */; };
@@ -25,6 +25,10 @@
 		844456C71FC6CF8200048C50 /* CustomCellForResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844456C51FC6CF8200048C50 /* CustomCellForResult.xib */; };
 		8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458A5281FBC351600EE164F /* BWLScoreGridView.m */; };
 		8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */; };
+		8463C4811FC6FCDE008B7B68 /* BWLStrikeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463C4801FC6FCDE008B7B68 /* BWLStrikeFrame.m */; };
+		8463C4841FC6FCEE008B7B68 /* BWLSpareFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463C4831FC6FCEE008B7B68 /* BWLSpareFrame.m */; };
+		846846FD1FC812F700C0B630 /* BWLPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846846FC1FC812F700C0B630 /* BWLPlayerView.m */; };
+		846847001FC8130E00C0B630 /* BWLPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846846FF1FC8130E00C0B630 /* BWLPlayerViewController.m */; };
 		846A84421FC4799E00AB67F6 /* BWLButtonsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */; };
 		847C9CC91FC57C3900393001 /* BWLRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C9CC81FC57C3900393001 /* BWLRegistrationController.m */; };
 		847C9CCD1FC5910600393001 /* CustomCellForTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C9CCB1FC5910600393001 /* CustomCellForTextField.m */; };
@@ -43,8 +47,8 @@
 		842E55C41FBB4E8100F469D2 /* Bowling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bowling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842E55C71FBB4E8100F469D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		842E55C81FBB4E8100F469D2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		842E55CA1FBB4E8100F469D2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		842E55CB1FBB4E8100F469D2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		842E55CA1FBB4E8100F469D2 /* BWLGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLGameController.h; sourceTree = "<group>"; };
+		842E55CB1FBB4E8100F469D2 /* BWLGameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLGameController.m; sourceTree = "<group>"; };
 		842E55CE1FBB4E8100F469D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		842E55D01FBB4E8100F469D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		842E55D31FBB4E8100F469D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,6 +72,14 @@
 		8458A5271FBC351600EE164F /* BWLScoreGridView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLScoreGridView.h; sourceTree = "<group>"; };
 		8458A5281FBC351600EE164F /* BWLScoreGridView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreGridView.m; sourceTree = "<group>"; };
 		8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWLScoreGridViewXIB.xib; sourceTree = "<group>"; };
+		8463C47F1FC6FCDE008B7B68 /* BWLStrikeFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLStrikeFrame.h; sourceTree = "<group>"; };
+		8463C4801FC6FCDE008B7B68 /* BWLStrikeFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLStrikeFrame.m; sourceTree = "<group>"; };
+		8463C4821FC6FCEE008B7B68 /* BWLSpareFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLSpareFrame.h; sourceTree = "<group>"; };
+		8463C4831FC6FCEE008B7B68 /* BWLSpareFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLSpareFrame.m; sourceTree = "<group>"; };
+		846846FB1FC812F700C0B630 /* BWLPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLPlayerView.h; sourceTree = "<group>"; };
+		846846FC1FC812F700C0B630 /* BWLPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLPlayerView.m; sourceTree = "<group>"; };
+		846846FE1FC8130E00C0B630 /* BWLPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLPlayerViewController.h; sourceTree = "<group>"; };
+		846846FF1FC8130E00C0B630 /* BWLPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLPlayerViewController.m; sourceTree = "<group>"; };
 		846A84401FC4799E00AB67F6 /* BWLButtonsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLButtonsComponent.h; sourceTree = "<group>"; };
 		846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLButtonsComponent.m; sourceTree = "<group>"; };
 		847C9CC71FC57C3900393001 /* BWLRegistrationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLRegistrationController.h; sourceTree = "<group>"; };
@@ -155,6 +167,10 @@
 				842E55E21FBB4EC300F469D2 /* BWLScoreCard.m */,
 				842E55E41FBB4EC300F469D2 /* BWLFrame.h */,
 				842E55E31FBB4EC300F469D2 /* BWLFrame.m */,
+				8463C47F1FC6FCDE008B7B68 /* BWLStrikeFrame.h */,
+				8463C4801FC6FCDE008B7B68 /* BWLStrikeFrame.m */,
+				8463C4821FC6FCEE008B7B68 /* BWLSpareFrame.h */,
+				8463C4831FC6FCEE008B7B68 /* BWLSpareFrame.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,10 +181,12 @@
 				842E55E51FBB4EC300F469D2 /* BWLResultController_BWLExtension.h */,
 				842E55E61FBB4EC300F469D2 /* BWLResultController.h */,
 				842E55E01FBB4EC200F469D2 /* BWLResultController.m */,
-				842E55CA1FBB4E8100F469D2 /* ViewController.h */,
-				842E55CB1FBB4E8100F469D2 /* ViewController.m */,
+				842E55CA1FBB4E8100F469D2 /* BWLGameController.h */,
+				842E55CB1FBB4E8100F469D2 /* BWLGameController.m */,
 				847C9CC71FC57C3900393001 /* BWLRegistrationController.h */,
 				847C9CC81FC57C3900393001 /* BWLRegistrationController.m */,
+				846846FE1FC8130E00C0B630 /* BWLPlayerViewController.h */,
+				846846FF1FC8130E00C0B630 /* BWLPlayerViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -193,6 +211,8 @@
 				844456C31FC6CF8200048C50 /* CustomCellForResult.h */,
 				844456C41FC6CF8200048C50 /* CustomCellForResult.m */,
 				844456C51FC6CF8200048C50 /* CustomCellForResult.xib */,
+				846846FB1FC812F700C0B630 /* BWLPlayerView.h */,
+				846846FC1FC812F700C0B630 /* BWLPlayerView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8463C4811FC6FCDE008B7B68 /* BWLStrikeFrame.m in Sources */,
 				847C9CD21FC5913B00393001 /* CustomCellForButton.m in Sources */,
 				842E55EC1FBB4EC400F469D2 /* BWLScoreCard.m in Sources */,
 				8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */,
@@ -351,14 +372,17 @@
 				842E55EB1FBB4EC400F469D2 /* BWLResultController.m in Sources */,
 				842E55EA1FBB4EC400F469D2 /* BWLFrameView.m in Sources */,
 				8489F6131FBDDB23005156ED /* BWLScoreInputView.m in Sources */,
-				842E55CC1FBB4E8100F469D2 /* ViewController.m in Sources */,
+				846847001FC8130E00C0B630 /* BWLPlayerViewController.m in Sources */,
+				842E55CC1FBB4E8100F469D2 /* BWLGameController.m in Sources */,
 				842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */,
 				842E55ED1FBB4EC400F469D2 /* BWLFrame.m in Sources */,
 				848841591FC41E4B0030525F /* BWLTopButtonsComponent.m in Sources */,
 				846A84421FC4799E00AB67F6 /* BWLButtonsComponent.m in Sources */,
 				842E55D71FBB4E8100F469D2 /* main.m in Sources */,
 				847C9CC91FC57C3900393001 /* BWLRegistrationController.m in Sources */,
+				846846FD1FC812F700C0B630 /* BWLPlayerView.m in Sources */,
 				844456C61FC6CF8200048C50 /* CustomCellForResult.m in Sources */,
+				8463C4841FC6FCEE008B7B68 /* BWLSpareFrame.m in Sources */,
 				847C9CCD1FC5910600393001 /* CustomCellForTextField.m in Sources */,
 				842E55C91FBB4E8100F469D2 /* AppDelegate.m in Sources */,
 			);

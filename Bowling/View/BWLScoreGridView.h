@@ -10,5 +10,8 @@
 
 @interface BWLScoreGridView : UIView
 @property (strong, nonatomic) IBOutlet UIView *scoreGridView;
+@property (weak, nonatomic) IBOutlet UILabel *firstAttempt;
+@property (weak, nonatomic) IBOutlet UILabel *secondAttemp;
+@property (weak, nonatomic) IBOutlet UILabel *result;
 
 @end

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface BWLGameController : UIViewController
+- (id)initWithScoreCards:(NSArray *)playersCards;
 
 @end
 

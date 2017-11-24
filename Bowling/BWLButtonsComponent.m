@@ -7,19 +7,20 @@
 //
 
 #import "BWLButtonsComponent.h"
+typedef void (^ScoreInputAction)(UIButton *);
 @interface BWLButtonsComponent()
-
+@property (nonatomic, copy) ScoreInputAction buttonBlock;
 @end
 
 @implementation BWLButtonsComponent
 
-- (id)initWithContainerView:(UIView *)containerView andTitles:(NSArray *)titles {
+- (id)initWithContainerView:(UIView *)containerView Titles:(NSArray *)titles withBlock:(void (^)(UIButton *))callbackBlock {
     self = [super init];
     if(self) {
         self.containerView = containerView;
         self.buttons = [NSMutableArray new];
         self.titles = titles;
-        
+        self.buttonBlock = callbackBlock;
     }
     return self;
 }
@@ -37,6 +38,7 @@
 
 - (BWLScoreInputView *)createScoreInputViewWithTitle:(NSString *)title isLastItem:(BOOL)isLastItem {
     BWLScoreInputView *myButton = [[BWLScoreInputView alloc] initWithTitle:title];
+    [myButton setScoreInputAction:self.buttonBlock];
     BWLScoreInputView *prevButton = [self.buttons lastObject];
     [myButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.containerView addSubview:myButton];

@@ -7,23 +7,30 @@
 //
 
 #import "BWLScoreInputView.h"
-#import "ViewController.h"
+#import "BWLGameController.h"
+#import "BWLStrikeFrame.h"
+#import "BWLFrame.h"
+
+@interface BWLScoreInputView()
+@property (nonatomic, strong)UIButton *scoreInputButton;
+@end
 
 @implementation BWLScoreInputView
 
 - (id)initWithTitle:(NSString *)title {
     self=[super init];
     if(self){
-        UIButton *myButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [myButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [myButton addTarget:self  action:@selector(pressButton:) forControlEvents:UIControlEventTouchUpInside];
-        [myButton setTitle:title forState:UIControlStateNormal];
-        [myButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self addSubview:myButton];
-        [self addConstraintForButton:myButton];
+        self.scoreInputButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.scoreInputButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.scoreInputButton addTarget:self  action:@selector(pressButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self.scoreInputButton setTitle:title forState:UIControlStateNormal];
+        [self.scoreInputButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self addSubview:self.scoreInputButton];
+        [self addConstraintForButton:self.scoreInputButton];
     }
     return self;
 }
+
 
 - (void)addConstraintForButton:(UIButton *)myButton {
     [self addConstraint:[NSLayoutConstraint constraintWithItem:myButton
@@ -57,6 +64,14 @@
 }
 
 - (void)pressButton:(UIButton *)sender {
+    if (self.scoreInputAction != nil) {
+        self.scoreInputAction(self.scoreInputButton);
+    }
+    if([sender.titleLabel.text isEqualToString:@"10"]){
+        BWLStrikeFrame *strike = [BWLStrikeFrame new];
+    } else {
+        BWLFrame *frame = [BWLFrame new];
+    }
     NSLog(@"%@",sender.titleLabel.text );
 }
 /*

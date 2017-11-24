@@ -10,7 +10,7 @@
 #import "BWLScoreCard.h"
 #import "CustomCellForTextField.h"
 #import "CustomCellForButton.h"
-#import "BWLResultController.h"
+#import "BWLGameController.h"
 
 enum RowType {
     RowTypePlayer = -1,
@@ -128,7 +128,7 @@ enum RowType {
 }
 
 - (IBAction)startGameButton:(id)sender {
-    BWLResultController *res = [[BWLResultController alloc]initWithScoreCards:self.playersCards];
+    BWLGameController *res = [[BWLGameController alloc]initWithScoreCards:self.playersCards];
     [self.navigationController pushViewController:res animated:YES];
 }
 
