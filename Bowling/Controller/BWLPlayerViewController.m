@@ -28,31 +28,28 @@ typedef void (^ButtonBlock)(UIButton *);
 @property (strong, nonatomic) UIView *containerViewForKeep;
 @property (strong, nonatomic) NSArray *titles;
 @property (strong, nonatomic) NSArray *titlesForKeepButtons;
-@property (strong, nonatomic)UILabel *nameOfPlayer;
+@property (nonatomic)NSInteger numberOfGrid;
 @end
 
 @implementation BWLPlayerViewController
 
-const static int height = 30;
-const static int leadingOffset = 10;
-const static int leadingOffsetToView = 0;
-const static int trailingOffset = 10;
-const static int topOffset = 0;
-const static int bottomOffset = 5;
+const static int kHeight = 30;
+const static int kLeadingOffset = 10;
+const static int kLeadingOffsetToView = 0;
+const static int kTrailingOffset = 10;
+const static int kTopOffset = 0;
+const static int kBottomOffset = 5;
 
-static int numberOfGrid = 0;
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 - (id)initWithPlayer:(BWLScoreCard *)card {
     self = [super init];
     if (self) {
-        self.playerView = [[BWLPlayerView alloc]init];
         self.playerCard = card;
+        
+        self.playerView = [[BWLPlayerView alloc]init];
+        [self.playerView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.numberOfGrid = 0;
+        self.views = [NSMutableArray new];
+        
     }
     return self;
 }
@@ -66,96 +63,72 @@ static int numberOfGrid = 0;
 }
 
 - (void)createGameForPlayer {
-    
-    BWLScoreCard *card = self.playerCard;
     self.titles = @[@"0",@"1",@"2",@"3",@"4",@"5"];
     self.titlesForKeepButtons = @[@"6",@"7",@"8",@"9",@"10"];
     self.containerView = [self createContainerView];
+    [self.containerView setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.containerViewForKeep = [self createContainerView];
-    
+    [self.containerViewForKeep setTranslatesAutoresizingMaskIntoConstraints:NO];
     __weak typeof(self) _self_weak = self;
     self.buttonBlock = ^(UIButton *button) {
-        NSInteger i = [button.titleLabel.text intValue];
-        BWLScoreGridView *grid = _self_weak.views[numberOfGrid];
-        _self_weak.playerCard.score += i;
-        if (i < 10) {
-            if ([grid.firstAttempt.text isEqualToString:@""]) {
-                grid.firstAttempt.text = button.titleLabel.text ;
-            } else {
-                grid.secondAttemp.text = button.titleLabel.text;
-                grid.result.text = [NSString stringWithFormat:@"%ld",(long)_self_weak.playerCard.score];
-                numberOfGrid++;
-            }
-            
-        } else {
-            grid.firstAttempt.text = button.titleLabel.text;
-            grid.result.text = [NSString stringWithFormat:@"%ld",(long)_self_weak.playerCard.score];
-            numberOfGrid++;
-        }
-        // NSLog(@"aaa");
+        [_self_weak fillFrame:button _self_weak:_self_weak];
     };
-    
     self.topButtons = [[BWLTopButtonsComponent alloc] initWithContainerView:self.containerView Titles:self.titles withBlock:self.buttonBlock];
     self.bottomButtons = [[BWLBottomButonsComponent alloc] initWithContainerView:self.containerViewForKeep Titles:self.titlesForKeepButtons withBlock:self.buttonBlock];
-    
     [self updateConstraintsForView:self.containerView];
     [self updateConstraintsForView:self.containerViewForKeep];
     self.containerViewForKeep.keepBottomInset.equal = KeepRequired(0);
-    //[self topOffsetBetweenView:nil andSecondView:self.containerView];
     [self topOffsetBetweenView:self.containerView andSecondView:self.containerViewForKeep];
-    
     [self.topButtons addBWLButtons];
     [self.bottomButtons addBWLButtons];
-    
-    
-    self.nameOfPlayer = [UILabel new];
-    [self.nameOfPlayer  setFont:[UIFont systemFontOfSize:15]];
-    [self.playerView addSubview:self.nameOfPlayer];
-    self.nameOfPlayer.keepTopInset.equal = KeepRequired(0);
-    self.nameOfPlayer.keepLeftInset.equal = KeepRequired(leadingOffset);
-    self.nameOfPlayer.text = card.playerName;
-    
-    self.views = [NSMutableArray new];
-    [self.views addObject:([self createFirstFrame])];
-    
     [self addBowlingFrames];
-    
     self.containerView.keepTopOffsetTo(self.views[0]).equal = KeepRequired(5);
-    
-    
 }
 
-
-- (BWLScoreGridView *)createFirstFrame {
-    BWLScoreGridView* grid = [[BWLScoreGridView alloc] init];
-    [self.playerView addSubview:grid];
-    grid.keepLeftInset.equal = KeepRequired(leadingOffset);
-    grid.keepBottomOffsetTo(self.containerView).equal = KeepRequired(bottomOffset);
-    grid.keepTopInset.equal = KeepRequired(topOffset);
-    grid.keepHeight.equal = KeepRequired(height);
-    return grid;
+- (void)fillFrame:(UIButton *)button _self_weak:(BWLPlayerViewController *)_self_weak{
+    NSInteger i = [button.titleLabel.text intValue];
+    BWLScoreGridView *grid = _self_weak.views[_self_weak.numberOfGrid];
+    _self_weak.playerCard.score += i;
+    if (i < 10) {
+        if ([grid.firstAttempt.text isEqualToString:@""]) {
+            grid.firstAttempt.text = button.titleLabel.text ;
+        } else {
+            grid.secondAttemp.text = button.titleLabel.text;
+            grid.result.text = [NSString stringWithFormat:@"%ld",(long)_self_weak.playerCard.score];
+            _self_weak.numberOfGrid++;
+        }
+    } else {
+        grid.firstAttempt.text = button.titleLabel.text;
+        grid.result.text = [NSString stringWithFormat:@"%ld",(long)_self_weak.playerCard.score];
+        _self_weak.numberOfGrid++;
+    }
 }
+
 - (BWLScoreGridResultView *)createLastFrame {
     BWLScoreGridResultView* grid = [[BWLScoreGridResultView alloc] init];
     BWLScoreGridView *prevGrid = [self.views lastObject];
     [self.playerView addSubview: grid];
-    grid.keepTopInset.equal = KeepRequired(topOffset);
-    grid.keepBottomOffsetTo(self.containerView).equal = KeepRequired(bottomOffset);
-    grid.keepRightInset.equal = KeepRequired(trailingOffset);
-    grid.keepLeftOffsetTo(prevGrid).equal = KeepRequired(leadingOffsetToView);
+    [self addConstraintsForResultGridView:grid andPrevView:prevGrid];
     return grid;
 }
+
+- (void)addConstraintsForResultGridView:(BWLScoreGridResultView *)grid andPrevView:(BWLScoreGridView *)prevGrid {
+    grid.keepTopInset.equal = KeepRequired(kTopOffset);
+    grid.keepBottomOffsetTo(self.containerView).equal = KeepRequired(kBottomOffset);
+    grid.keepRightInset.equal = KeepRequired(kTrailingOffset);
+    grid.keepLeftOffsetTo(prevGrid).equal = KeepRequired(kLeadingOffsetToView);
+}
+
 - (BWLScoreGridView *)createFrame {
     BWLScoreGridView *grid = [[BWLScoreGridView alloc]init] ;
     BWLScoreGridView *prevGrid = [self.views lastObject];
     [self.playerView addSubview:grid];
-    grid.keepBottomOffsetTo(self.containerView).equal = KeepRequired(bottomOffset);
-    grid.keepTopInset.equal = KeepRequired(topOffset);
-    grid.keepLeftOffsetTo(prevGrid).equal = KeepRequired(leadingOffsetToView);
+    [self updateConstraintsBetweenKeepView:prevGrid andSecondView:grid];
     return grid;
 }
+
 - (void)addBowlingFrames {
-    for (int i = 1; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {
         if(i < 9) {
             BWLScoreGridView *grid = [self createFrame];
             [self.views addObject:grid];
@@ -169,6 +142,16 @@ static int numberOfGrid = 0;
     [self.views keepHeightsEqual];
 }
 
+- (void)updateConstraintsBetweenKeepView:(BWLScoreGridView *)firstView andSecondView:(BWLScoreGridView *)secondView{
+    if (firstView == nil) {
+        secondView.keepLeftInset.equal = KeepRequired(kLeadingOffset);
+        secondView.keepTopInset.equal = KeepRequired(kTopOffset);
+        secondView.keepHeight.equal = KeepRequired(kHeight);
+    } else {
+        secondView.keepTopInset.equal = KeepRequired(kTopOffset);
+        secondView.keepLeftOffsetTo(firstView).equal = KeepRequired(kLeadingOffsetToView);
+    }
+}
 
 - (void)updateConstraintsForView:(UIView *)view {
     [self.playerView addConstraint:[NSLayoutConstraint constraintWithItem:view
@@ -191,7 +174,7 @@ static int numberOfGrid = 0;
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:1.0
-                                                           constant:height]];
+                                                           constant:kHeight]];
 }
 
 - (void)topOffsetBetweenView:(UIView *)firstView andSecondView:(UIView *)secondView {
@@ -212,7 +195,6 @@ static int numberOfGrid = 0;
                                                              multiplier:1.0
                                                                constant:5]];
     }
-    
 }
 
 @end
