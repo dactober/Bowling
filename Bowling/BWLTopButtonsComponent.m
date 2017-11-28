@@ -106,6 +106,4 @@ static const int trailingOffset = 0;
                                                                     constant:trailingOffset]];
 }
 
-
-
 @end

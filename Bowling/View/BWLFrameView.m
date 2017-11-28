@@ -11,18 +11,11 @@ IB_DESIGNABLE
 
 @implementation BWLFrameView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
- */
 - (void)drawRect:(CGRect)rect {
-    //CGContextRef context= UIGraphicsGetCurrentContext();
     CGRect myFrame= self.bounds;
-    //CGContextSetLineWidth(context, 1);
     CGRectInset(myFrame, 5, 5);
     [_fillColor set];
     UIRectFrame(myFrame);
-    // Drawing code
 }
 
 

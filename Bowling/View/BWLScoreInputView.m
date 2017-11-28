@@ -31,7 +31,6 @@
     return self;
 }
 
-
 - (void)addConstraintForButton:(UIButton *)myButton {
     [self addConstraint:[NSLayoutConstraint constraintWithItem:myButton
                                                      attribute:NSLayoutAttributeTop
@@ -74,12 +73,5 @@
     }
     NSLog(@"%@",sender.titleLabel.text );
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

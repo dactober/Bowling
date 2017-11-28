@@ -14,7 +14,7 @@ typedef void (^ScoreInputAction)(UIButton *);
 
 @implementation BWLButtonsComponent
 
-- (id)initWithContainerView:(UIView *)containerView Titles:(NSArray *)titles withBlock:(void (^)(UIButton *))callbackBlock {
+- (id)initWithContainerView:(UIView *)containerView titles:(NSArray *)titles withBlock:(void (^)(UIButton *))callbackBlock {
     self = [super init];
     if(self) {
         self.containerView = containerView;

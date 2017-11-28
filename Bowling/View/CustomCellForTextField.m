@@ -15,16 +15,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
-
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     [self.textField setTextColor:[UIColor grayColor]];
     [self.textField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
-    // Configure the view for the selected state
 }
 
 - (void)textChange {

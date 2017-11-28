@@ -24,6 +24,7 @@
 		844456C61FC6CF8200048C50 /* CustomCellForResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 844456C41FC6CF8200048C50 /* CustomCellForResult.m */; };
 		844456C71FC6CF8200048C50 /* CustomCellForResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844456C51FC6CF8200048C50 /* CustomCellForResult.xib */; };
 		8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458A5281FBC351600EE164F /* BWLScoreGridView.m */; };
+		845E61901FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E618F1FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.m */; };
 		8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */; };
 		8463C4811FC6FCDE008B7B68 /* BWLStrikeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463C4801FC6FCDE008B7B68 /* BWLStrikeFrame.m */; };
 		8463C4841FC6FCEE008B7B68 /* BWLSpareFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463C4831FC6FCEE008B7B68 /* BWLSpareFrame.m */; };
@@ -71,6 +72,8 @@
 		844456C51FC6CF8200048C50 /* CustomCellForResult.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellForResult.xib; sourceTree = "<group>"; };
 		8458A5271FBC351600EE164F /* BWLScoreGridView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLScoreGridView.h; sourceTree = "<group>"; };
 		8458A5281FBC351600EE164F /* BWLScoreGridView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreGridView.m; sourceTree = "<group>"; };
+		845E618E1FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BWLPlayerViewController+ViewConstraints.h"; sourceTree = "<group>"; };
+		845E618F1FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BWLPlayerViewController+ViewConstraints.m"; sourceTree = "<group>"; };
 		8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWLScoreGridViewXIB.xib; sourceTree = "<group>"; };
 		8463C47F1FC6FCDE008B7B68 /* BWLStrikeFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLStrikeFrame.h; sourceTree = "<group>"; };
 		8463C4801FC6FCDE008B7B68 /* BWLStrikeFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLStrikeFrame.m; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				847C9CC81FC57C3900393001 /* BWLRegistrationController.m */,
 				846846FE1FC8130E00C0B630 /* BWLPlayerViewController.h */,
 				846846FF1FC8130E00C0B630 /* BWLPlayerViewController.m */,
+				845E618E1FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.h */,
+				845E618F1FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				842E55EA1FBB4EC400F469D2 /* BWLFrameView.m in Sources */,
 				8489F6131FBDDB23005156ED /* BWLScoreInputView.m in Sources */,
 				846847001FC8130E00C0B630 /* BWLPlayerViewController.m in Sources */,
+				845E61901FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.m in Sources */,
 				842E55CC1FBB4E8100F469D2 /* BWLGameController.m in Sources */,
 				842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */,
 				842E55ED1FBB4EC400F469D2 /* BWLFrame.m in Sources */,

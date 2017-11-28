@@ -13,60 +13,59 @@
 
 @interface BWLGameController ()
 
-@property (strong,nonatomic) NSArray *playersCards;
-@property (strong, nonatomic)NSMutableArray *playersGames;
-@property (strong, nonatomic)BWLPlayerViewController *player;
-@property (strong, nonatomic)NSMutableArray *views;
-@property (strong, nonatomic)UILabel *nameOfPlayer;
-@property (strong, nonatomic)UIScrollView *gameScrollView;
+@property (strong, nonatomic) NSArray *playersCards;
+@property (strong, nonatomic) NSMutableArray *playersGames;
+@property (strong, nonatomic) BWLPlayerViewController *player;
+@property (strong, nonatomic) NSMutableArray *views;
+@property (strong, nonatomic) UILabel *nameOfPlayer;
+@property (strong, nonatomic) UIScrollView *gameScrollView;
 @end
 
 @implementation BWLGameController
 const static int kLeadingOffset = 0;
 const static int kTrailingOffset = 0;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.playersGames = [NSMutableArray new];
-    self.views = [NSMutableArray new];
-    self.gameScrollView = [UIScrollView new];
     [self.view addSubview:self.gameScrollView];
+    [self addConstraintForScrollView];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self addViews];
+}
+
+- (void)addViews {
+    for(int i = 0;i < self.playersCards.count;i++) {
+        if (i < self.playersCards.count - 1) {
+            [self addView:i isLastView:NO];
+        } else {
+            [self addView:i isLastView:YES];
+        }
+    }
+}
+
+- (void)addConstraintForScrollView {
     self.gameScrollView.keepTopInset.equal = KeepRequired(0);
     self.gameScrollView.keepBottomInset.equal = KeepRequired(0);
     self.gameScrollView.keepLeftInset.equal = KeepRequired(0);
     self.gameScrollView.keepRightInset.equal = KeepRequired(0);
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    for(int i = 0;i < self.playersCards.count;i++) {
-        if (i < self.playersCards.count - 1) {
-            [self createView:i isLastView:NO];
-        } else {
-            [self createView:i isLastView:YES];
-        }
-        
-    }
-//    [self.views addObject:self.gameScrollView];
-//    [self.views keepWidthsEqual];
-//    [self.views removeLastObject];
-//    [self.views keepHeightsEqual];
-    
 }
 
-- (void)createView:(NSInteger )i isLastView:(BOOL)isLastView{
+- (void)addView:(NSInteger )i isLastView:(BOOL)isLastView{
     self.player = [[BWLPlayerViewController alloc]initWithPlayer:self.playersCards[i]];
     [self.gameScrollView addSubview:self.player.playerView];
     if (i == 0) {
-        [self createConstrainsBetweenView:nil andSecondView:self.player.playerView isLastView:isLastView];
+        [self addConstrainsBetweenPrevView:nil andView:self.player.playerView isLastView:isLastView];
     } else {
         BWLPlayerViewController *prev = [self.playersGames lastObject];
-        [self createConstrainsBetweenView:prev.playerView andSecondView:self.player.playerView isLastView:isLastView];
+        [self addConstrainsBetweenPrevView:prev.playerView andView:self.player.playerView isLastView:isLastView];
     }
-    [self.player createGameForPlayer];
+    [self.player addPlayer];
     [self.playersGames addObject:self.player];
     [self.views addObject:self.player.playerView];
-    
     self.nameOfPlayer = [self createLabel];
     BWLScoreCard *card = self.playersCards[i];
     self.nameOfPlayer.text = card.playerName;
-    [self createConstraintForLabel:self.nameOfPlayer andView:self.player.playerView];
+    [self addConstraintForLabel:self.nameOfPlayer andView:self.player.playerView];
 }
 
 - (UILabel *)createLabel {
@@ -76,26 +75,24 @@ const static int kTrailingOffset = 0;
     return label;
 }
 
-- (void)createConstrainsBetweenView:(BWLPlayerView *)firstView andSecondView:(BWLPlayerView *)secondView isLastView:(BOOL)isLastView{
-    if(firstView == nil) {
-        secondView.keepTopInset.equal = KeepRequired(20);
-        secondView.keepLeftInset.equal = KeepRequired(kLeadingOffset);
-        secondView.keepRightInset.equal = KeepRequired(kTrailingOffset);
-        NSArray *equalList = @[secondView, self.gameScrollView];
+- (void)addConstrainsBetweenPrevView:(BWLPlayerView *)prevView andView:(BWLPlayerView *)view isLastView:(BOOL)isLastView{
+    if(prevView == nil) {
+        view.keepTopInset.equal = KeepRequired(20);
+        view.keepLeftInset.equal = KeepRequired(kLeadingOffset);
+        view.keepRightInset.equal = KeepRequired(kTrailingOffset);
+        NSArray *equalList = @[view, self.gameScrollView];
         [equalList keepWidthsEqual];
     } else {
         if (isLastView) {
-            secondView.keepBottomInset.equal = KeepRequired(0);
+            view.keepBottomInset.equal = KeepRequired(0);
         }
-        secondView.keepTopOffsetTo(firstView).equal = KeepRequired(15);
-        secondView.keepLeftInset.equal = KeepRequired(kLeadingOffset);
-        secondView.keepRightInset.equal = KeepRequired(kTrailingOffset);
+        view.keepTopOffsetTo(prevView).equal = KeepRequired(15);
+        view.keepLeftInset.equal = KeepRequired(kLeadingOffset);
+        view.keepRightInset.equal = KeepRequired(kTrailingOffset);
     }
-   
-    
 }
 
-- (void)createConstraintForLabel:(UILabel *)name andView:(BWLPlayerView *)view {
+- (void)addConstraintForLabel:(UILabel *)name andView:(BWLPlayerView *)view {
     name.keepBottomOffsetTo(view).equal = KeepRequired(0);
     name.keepLeftInset.equal = KeepRequired(kLeadingOffset + 10);
 }
@@ -104,14 +101,20 @@ const static int kTrailingOffset = 0;
     self = [super init];
     if (self) {
         self.playersCards = playersCards;
+
+        [self customInit];
     }
     return self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)customInit {
+    self.playersGames = [NSMutableArray new];
+    self.views = [NSMutableArray new];
+    self.gameScrollView = [UIScrollView new];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
 
 @end

@@ -37,8 +37,8 @@ enum RowType {
 
 - (NSDictionary *)rowTypeMapping {
     if (!_rowTypeMapping) {
-        _rowTypeMapping = @{[NSNumber numberWithInt:RowTypeTextField] : @"MyIDForText",
-                            [NSNumber numberWithInt:RowTypeButton] : @"MyIDForButton"};
+        _rowTypeMapping = @{@(RowTypeTextField) : @"MyIDForText",
+                            @(RowTypeButton) : @"MyIDForButton"};
     }
     return _rowTypeMapping;
 }
@@ -70,20 +70,20 @@ enum RowType {
 }
 
 - (CustomCellForTextField *)createCellForTextField:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath {
-        CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[[NSNumber numberWithInt:RowTypeTextField]]  forIndexPath:indexPath];
+        CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[@(RowTypeTextField)]  forIndexPath:indexPath];
         [self setActionBlockForTextField:cell andindexPath:indexPath];
         return cell;
 }
 
 - (CustomCellForTextField *)createCellForPlayer:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath {
-    CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[[NSNumber numberWithInt:RowTypeTextField]] forIndexPath:indexPath];
+    CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[@(RowTypeTextField)] forIndexPath:indexPath];
     BWLScoreCard *scoreCard = self.playersCards[indexPath.row];
     cell.textField.text = [NSString stringWithFormat:@"%@",scoreCard.playerName] ;
     return cell;
 }
 
 - (CustomCellForButton *)createCellForButton:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath {
-    CustomCellForButton *cell = (CustomCellForButton *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[[NSNumber numberWithInt:RowTypeButton]]  forIndexPath:indexPath];
+    CustomCellForButton *cell = (CustomCellForButton *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[@(RowTypeButton)]  forIndexPath:indexPath];
     cell.addPlayerButton.enabled = NO;
     [self setActionBlockForButton:cell andindexPath:indexPath];
     return cell;
@@ -95,7 +95,6 @@ enum RowType {
             NSIndexPath *indexPathForNextRow = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0];
             [_self_weak enableButton:indexPathForNextRow textLenght:text.length];
         }];
-    
 }
 
 - (void)setActionBlockForButton:(CustomCellForButton *)cell andindexPath:(NSIndexPath *)indexPath {
@@ -139,18 +138,6 @@ enum RowType {
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 @end

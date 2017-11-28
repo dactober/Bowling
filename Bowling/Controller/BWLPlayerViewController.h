@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BWLScoreGridView.h"
+#import "BWLScoreGridResultView.h"
 #import "BWLPlayerView.h"
 #import "BWLScoreCard.h"
+#import "KeepLayout.h"
 @interface BWLPlayerViewController : NSObject
 @property (nonatomic, strong)BWLPlayerView *playerView;
+@property (strong, nonatomic) UIView *containerView;
 - (id)initWithPlayer:(BWLScoreCard *)card;
-- (void)createGameForPlayer;
+- (void)addPlayer;
 @end

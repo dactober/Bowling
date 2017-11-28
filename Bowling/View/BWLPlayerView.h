@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface BWLPlayerView : UIView
-- (id)init;
 @end

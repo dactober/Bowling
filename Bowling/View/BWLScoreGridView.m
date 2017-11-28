@@ -15,7 +15,6 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self customInit];
-
     }
     return self;
 }
@@ -28,17 +27,9 @@
 }
 
 - (void)customInit {
-   
         [[NSBundle mainBundle] loadNibNamed:@"BWLScoreGridViewXIB" owner:self options:nil];
         [self addSubview:self.scoreGridView];
         self.scoreGridView.frame=self.bounds;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
