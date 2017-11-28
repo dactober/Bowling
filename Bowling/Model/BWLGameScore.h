@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BWLGameScore : NSObject
+typedef NS_ENUM (NSInteger, FrameType) {
+    Strike,
+    Spare,
+    Frame
+    
+};
 
+@interface BWLGameScore : NSObject
+@property (nonatomic) NSInteger score;
+- (void)createFrame:(FrameType)frameType withScore:(NSInteger)score withNumberOfGrid:(NSInteger)numberOfGrid andBlock:(void(^)(NSInteger, NSInteger))block;
+- (void)updateFrame;
 @end

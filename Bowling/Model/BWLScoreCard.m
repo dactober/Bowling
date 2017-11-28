@@ -8,6 +8,11 @@
 
 #import "BWLScoreCard.h"
 
+@interface BWLScoreCard()
+
+
+@end
+
 @implementation BWLScoreCard {
     
 }
@@ -29,7 +34,35 @@
    self = [super init];
     if(self){
         self.playerName=name;
+        
+        self.gameScore = [[BWLGameScore alloc]init];
     }
     return self;
+}
+
+- (FrameType)updateGameScore:(NSInteger)score withNumberOfGrid:(NSInteger)numberOfGrid andBlock:(void (^)(NSInteger, NSInteger))block {
+    if (score == 10) {
+        [self.gameScore createFrame:Strike withScore:score withNumberOfGrid:numberOfGrid andBlock:block];
+        return Strike;
+    } else {
+        [self.gameScore createFrame:Frame withScore:score withNumberOfGrid:numberOfGrid andBlock:block];
+        return Frame;
+    }
+    
+    
+//    if (i == kGridCount) {
+//        BWLStrikeFrame *strike = [BWLStrikeFrame new];
+//        grid.firstAttempt.text = @"X";
+//        self.numberOfGrid++;
+//    } else if ([grid.firstAttempt.text intValue] + i == kGridCount) {
+//        BWLSpareFrame *spare = [BWLSpareFrame new];
+//        grid.secondAttemp.text = @"/";
+//        self.numberOfGrid++;
+//    } else {
+//        BWLFrame *frame = [BWLFrame new];
+//
+//        frame.score = i;
+//        grid.firstAttempt.text = button.titleLabel.text;
+//    }
 }
 @end

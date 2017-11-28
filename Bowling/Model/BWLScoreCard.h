@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "BWLGameScore.h"
 @interface BWLScoreCard : NSObject
 @property (nonatomic,copy)NSString* playerName;
 @property (nonatomic)NSInteger score;
@@ -16,4 +16,6 @@
 - (void)addScore:(NSInteger)score;
 - (void)printScore;
 - (id)initWithName:(NSString*)name;
+@property (strong, nonatomic)BWLGameScore *gameScore;
+- (FrameType)updateGameScore:(NSInteger)score withNumberOfGrid:(NSInteger)numberOfGrid andBlock:(void(^)(NSInteger, NSInteger))block;
 @end
