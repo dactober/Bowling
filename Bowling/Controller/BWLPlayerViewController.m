@@ -165,6 +165,7 @@ const static int kSpare = 10;
     }];
     if (type == Strike) {
         if ([grid isEmptyFirstAttemp]) {
+            grid.score += score;
             [grid setFirstAttempScore:score];
         } else if ([grid isEmptySecondAttemp]){
             [grid setSecondAttempScore:score];//
@@ -178,7 +179,7 @@ const static int kSpare = 10;
             [grid setFirstAttempScore:score];
             grid.score += score;
         } else if ([grid isEmptySecondAttemp]) {
-            [grid setSecondAttempScore:score];//
+            [grid setSecondAttempScore:score];
             grid.score += score;
             if (grid.score < kSpare) {
                 [self hideContainers];

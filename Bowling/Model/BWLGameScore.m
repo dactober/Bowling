@@ -7,21 +7,22 @@
 //
 
 #import "BWLGameScore.h"
-#import "BWLStrikeFrame.h"
+
 #import "BWLFrame.h"
 #import "BWLSpareFrame.h"
+
 @interface BWLGameScore ()
-@property (nonatomic, strong)NSMutableArray<BWLStrikeFrame *> *currentStrikeSequence;
+@property (nonatomic, strong)NSMutableArray<BWLCommonFrame *> *currentStrikeSequence;
 @property (nonatomic, strong)BWLFrame *frame;
-@property (nonatomic, strong)NSMutableArray<BWLSpareFrame *> *curentSpareSequence;
+@property (nonatomic, strong)NSMutableArray<BWLCommonFrame *> *curentSpareSequence;
+@property (nonatomic, strong)BWLCommonFrame *commonBowlingFrame;
 @end
 
 @implementation BWLGameScore
 static int const kStrike = 10;
 static int const kLastAttemp = 3;
 static int const kLastFrameAttemp = kLastAttemp - 1;
-static int const kFirstFrameAttemp = 1;
-static int const kOneFrameAttemp = 1;
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -31,78 +32,60 @@ static int const kOneFrameAttemp = 1;
     return self;
 }
 
-- (void)addBowlingFrame:(BowlingFrameType)bowlingFrameType withScore:(NSInteger)score withIndex:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block {
-    switch (bowlingFrameType) {
-        case Strike: {
-            [self updateStrikeFrame:score withBlock:block];
-            [self updateSpareFrame:score withBlock:block];
-            BWLStrikeFrame *strikeFrame = [BWLStrikeFrame new];
-            [self.currentStrikeSequence addObject:strikeFrame];
-            strikeFrame.score = score;
-            strikeFrame.index = index;
-            strikeFrame.attemp += kOneFrameAttemp;
-            break;
-        }
-        case Frame: {
-            if (self.frame == nil) {
-                self.frame = [BWLFrame new];
-                self.frame.firstScore = score;
-            } else {
-                self.frame.secondScore = score;
-                if (self.frame.firstScore + self.frame.secondScore == kStrike) {
-                    BWLSpareFrame *spareFrame = [self createSpareFrame:index];
-                    [self.curentSpareSequence addObject:spareFrame];
-                }
+- (BowlingFrameType)addBowlingFrameWithScore:(NSInteger)score index:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block {
+    BOOL isSpare = NO;
+    BWLCommonFrame *commonFrame = [[BWLCommonFrame alloc]initWithScore:score index:index];
+    if (commonFrame.type == Strike) {
+        [self updateStrikeFrame:score withBlock:block];
+        [self updateSpareFrame:score withBlock:block];
+        [self.currentStrikeSequence addObject:commonFrame];
+    } else {
+        if (self.commonBowlingFrame == nil) {
+            self.commonBowlingFrame = commonFrame;
+        } else {
+            [self.commonBowlingFrame addScore:score];
+            if (self.commonBowlingFrame.score == kStrike) {
+                BWLCommonFrame *spareFrame = self.commonBowlingFrame;
+                [self.curentSpareSequence addObject:spareFrame];
+                isSpare = YES;
             }
-            [self updateBowlingFrame:score index:index withBlock:block];
-            break;
         }
-        default:
-            break;
+        [self updateBowlingFrame:score index:index isSpare:isSpare withBlock:block];
     }
+    return commonFrame.type;
 }
 
-- (BWLSpareFrame *)createSpareFrame:(NSInteger)index {
-    BWLSpareFrame *spareFrame = [BWLSpareFrame new];
-    spareFrame.attemp = kFirstFrameAttemp;
-    spareFrame.index = index;
-    return spareFrame;
-}
-
-- (void)updateBowlingFrame:(NSInteger)score index:(NSInteger)index withBlock:(void (^)(NSInteger, NSInteger))block{
-    self.frame.score += score;
-    self.frame.attemp += kOneFrameAttemp;
+- (void)updateBowlingFrame:(NSInteger)score index:(NSInteger)index isSpare:(BOOL)isSpare withBlock:(void (^)(NSInteger, NSInteger))block {
     [self updateStrikeFrame:score withBlock:block];
-    [self updateSpareFrame:self.frame.score withBlock:block];
-    if (self.frame.attemp == kLastFrameAttemp) {
-        if (self.curentSpareSequence.count == 0) {
-            block(self.frame.score, index);
+    if (!isSpare) {
+        [self updateSpareFrame:self.commonBowlingFrame.score withBlock:block];
+    }
+    if (self.commonBowlingFrame.attemp == kLastFrameAttemp) {
+        if (!isSpare) {
+            block(self.commonBowlingFrame.score, index);
         }
-        self.frame = nil;
+        self.commonBowlingFrame = nil;
     }
 }
 
-- (void)updateStrikeFrame:(NSInteger)score withBlock:(void (^)(NSInteger, NSInteger))block{
-    for (int i = 0;i < self.currentStrikeSequence.count;i++) {
-        BWLStrikeFrame *frame = self.currentStrikeSequence[i];
-        frame.attemp += kOneFrameAttemp;
-        frame.score += score;
+- (void)updateStrikeFrame:(NSInteger)score withBlock:(void (^)(NSInteger, NSInteger))block {
+    NSArray *strikeList = [NSArray arrayWithArray:self.currentStrikeSequence];
+    for (BWLCommonFrame *frame in strikeList) {
+        [frame addScore:score];
         if (frame.attemp == kLastAttemp) {
             block(frame.score, frame.index);
-            [self.currentStrikeSequence removeObjectAtIndex:i];
-            i--;
+            [self.currentStrikeSequence removeObject:frame];
         }
     }
 }
 
-- (void)updateSpareFrame:(NSInteger)score withBlock:(void (^)(NSInteger, NSInteger))block{
-    for (int i = 0;i < self.curentSpareSequence.count;i++) {
-        BWLSpareFrame *frame = self.curentSpareSequence[i];
-        frame.attemp += kOneFrameAttemp;
-        frame.score += score;
+- (void)updateSpareFrame:(NSInteger)score withBlock:(void (^)(NSInteger, NSInteger))block {
+    NSArray *spareList = [NSArray arrayWithArray:self.curentSpareSequence];
+    for (BWLCommonFrame *frame in spareList) {
+        [frame addScore:score];
         if (frame.attemp == kLastAttemp) {
             block(frame.score, frame.index);
-            [self.curentSpareSequence removeObjectAtIndex:i];
+            [self.curentSpareSequence removeObject:frame];
         }
     }
 }

@@ -7,15 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BWLCommonFrame.h"
 
-typedef NS_ENUM (NSInteger, BowlingFrameType) {
-    Strike,
-    Spare,
-    Frame
-    
-};
 
 @interface BWLGameScore : NSObject
 @property (nonatomic) NSInteger score;
-- (void)addBowlingFrame:(BowlingFrameType)frameType withScore:(NSInteger)score withIndex:(NSInteger)index andBlock:(void(^)(NSInteger, NSInteger))block;
+- (BowlingFrameType)addBowlingFrameWithScore:(NSInteger)score index:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block;
 @end

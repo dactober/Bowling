@@ -13,7 +13,6 @@
 
 @implementation BWLScoreCard
 
-static int const kStrike = 10;
 @synthesize playerName=_playerName;
 @synthesize score=_score;
 + (NSString*)title {
@@ -38,12 +37,6 @@ static int const kStrike = 10;
 }
 
 - (BowlingFrameType)updateGameScore:(NSInteger)score withIndex:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block {
-    if (score == kStrike) {
-        [self.gameScore addBowlingFrame:Strike withScore:score withIndex:index andBlock:block];
-        return Strike;
-    } else {
-        [self.gameScore addBowlingFrame:Frame withScore:score withIndex:index andBlock:block];
-        return Frame;
-    }
+        return [self.gameScore addBowlingFrameWithScore:score index:index andBlock:block];
 }
 @end

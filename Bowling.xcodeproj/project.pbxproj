@@ -37,6 +37,7 @@
 		848841591FC41E4B0030525F /* BWLTopButtonsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 848841581FC41E4B0030525F /* BWLTopButtonsComponent.m */; };
 		8488415C1FC426530030525F /* BWLBottomButonsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488415B1FC426530030525F /* BWLBottomButonsComponent.m */; };
 		8489F6131FBDDB23005156ED /* BWLScoreInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8489F6121FBDDB23005156ED /* BWLScoreInputView.m */; };
+		84B7704B1FD03ED200BDBF31 /* BWLCommonFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7704A1FD03ED200BDBF31 /* BWLCommonFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,8 @@
 		8488415B1FC426530030525F /* BWLBottomButonsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLBottomButonsComponent.m; sourceTree = "<group>"; };
 		8489F6111FBDDB23005156ED /* BWLScoreInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLScoreInputView.h; sourceTree = "<group>"; };
 		8489F6121FBDDB23005156ED /* BWLScoreInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreInputView.m; sourceTree = "<group>"; };
+		84B770491FD03ED200BDBF31 /* BWLCommonFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLCommonFrame.h; sourceTree = "<group>"; };
+		84B7704A1FD03ED200BDBF31 /* BWLCommonFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLCommonFrame.m; sourceTree = "<group>"; };
 		DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bowling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,6 +177,8 @@
 				8463C4801FC6FCDE008B7B68 /* BWLStrikeFrame.m */,
 				8463C4821FC6FCEE008B7B68 /* BWLSpareFrame.h */,
 				8463C4831FC6FCEE008B7B68 /* BWLSpareFrame.m */,
+				84B770491FD03ED200BDBF31 /* BWLCommonFrame.h */,
+				84B7704A1FD03ED200BDBF31 /* BWLCommonFrame.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				847C9CC91FC57C3900393001 /* BWLRegistrationController.m in Sources */,
 				846846FD1FC812F700C0B630 /* BWLPlayerView.m in Sources */,
 				844456C61FC6CF8200048C50 /* CustomCellForResult.m in Sources */,
+				84B7704B1FD03ED200BDBF31 /* BWLCommonFrame.m in Sources */,
 				8463C4841FC6FCEE008B7B68 /* BWLSpareFrame.m in Sources */,
 				847C9CCD1FC5910600393001 /* CustomCellForTextField.m in Sources */,
 				842E55C91FBB4E8100F469D2 /* AppDelegate.m in Sources */,
