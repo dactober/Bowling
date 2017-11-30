@@ -32,4 +32,41 @@
     self.scoreGridView.frame=self.bounds;
 }
 
+- (void)setFirstAttempScore:(NSInteger)score {
+        self.firstAttemp.text = [self stringWithInteger:score];
+}
+
+- (void)setSecondAttempScore:(NSInteger)score {
+    self.secondAttemp.text = [self stringWithInteger:score];
+}
+
+- (void)setThirdAttempScore:(NSInteger)score {
+    self.thirdAttemp.text = [self stringWithInteger:score];
+}
+
+- (void)setResultScore:(NSInteger)score {
+    self.result.text = [self stringWithInteger:score];
+}
+
+- (BOOL)isEmptyFirstAttemp {
+    if ([self.firstAttemp.text isEqualToString:@""]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)isEmptySecondAttemp {
+    if ([self.secondAttemp.text isEqualToString:@""]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (NSString *)stringWithInteger:(NSInteger)number {
+    return [NSString stringWithFormat:@"%ld",(long)number];
+}
+
+
 @end

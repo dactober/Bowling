@@ -11,5 +11,5 @@
 @interface BWLStrikeFrame : NSObject
 @property (nonatomic) NSInteger score;
 @property (nonatomic) NSInteger attemp;
-@property (nonatomic) NSInteger numberOfGrid;
+@property (nonatomic) NSInteger index;
 @end

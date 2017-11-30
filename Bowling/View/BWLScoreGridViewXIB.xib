@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BWLScoreGridView">
             <connections>
-                <outlet property="firstAttempt" destination="y8A-hh-Dvq" id="HNO-dG-TcH"/>
+                <outlet property="firstAttemp" destination="WwY-yk-CSe" id="d9g-9W-UaV"/>
                 <outlet property="result" destination="kr3-My-wnS" id="Nro-yX-KzW"/>
                 <outlet property="scoreGridView" destination="iN0-l3-epB" id="cbk-aD-r58"/>
                 <outlet property="secondAttemp" destination="DHL-kq-R07" id="dOk-ID-IZY"/>
@@ -26,19 +26,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxx-wS-ddP" customClass="BWLFrameView">
                     <rect key="frame" x="0.0" y="0.0" width="124" height="86"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8A-hh-Dvq">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwY-yk-CSe">
                             <rect key="frame" x="0.0" y="0.0" width="124" height="86"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="1" green="0.091069759012325502" blue="0.063680393040578709" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="y8A-hh-Dvq" secondAttribute="trailing" id="ITH-oQ-hUB"/>
-                        <constraint firstItem="y8A-hh-Dvq" firstAttribute="leading" secondItem="dxx-wS-ddP" secondAttribute="leading" id="TxO-I2-qc3"/>
-                        <constraint firstItem="y8A-hh-Dvq" firstAttribute="top" secondItem="dxx-wS-ddP" secondAttribute="top" id="ZG4-pO-Xhu"/>
-                        <constraint firstAttribute="bottom" secondItem="y8A-hh-Dvq" secondAttribute="bottom" id="png-hH-2EJ"/>
+                        <constraint firstItem="WwY-yk-CSe" firstAttribute="top" secondItem="dxx-wS-ddP" secondAttribute="top" id="VXQ-rK-dF5"/>
+                        <constraint firstAttribute="trailing" secondItem="WwY-yk-CSe" secondAttribute="trailing" id="hHC-4u-9aM"/>
+                        <constraint firstAttribute="bottom" secondItem="WwY-yk-CSe" secondAttribute="bottom" id="r6o-8T-mZu"/>
+                        <constraint firstItem="WwY-yk-CSe" firstAttribute="leading" secondItem="dxx-wS-ddP" secondAttribute="leading" id="vJf-tm-Hel"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
@@ -55,11 +55,11 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHL-kq-R07">
                             <rect key="frame" x="0.0" y="0.0" width="124" height="86"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <color key="textColor" red="1" green="0.19635135712918839" blue="0.10108143755182153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="DHL-kq-R07" secondAttribute="bottom" id="Oee-lO-NIz"/>
                         <constraint firstAttribute="trailing" secondItem="DHL-kq-R07" secondAttribute="trailing" id="Z5d-Zm-oRs"/>
@@ -81,11 +81,11 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kr3-My-wnS">
                             <rect key="frame" x="0.0" y="0.0" width="248" height="86"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <color key="textColor" red="1" green="0.17906151079619292" blue="0.14083593930556537" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.4292214224" green="0.47450980390000003" blue="0.1141208355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="kr3-My-wnS" secondAttribute="trailing" id="6o5-Oi-9Bl"/>
                         <constraint firstItem="kr3-My-wnS" firstAttribute="leading" secondItem="3WZ-my-aUc" secondAttribute="leading" id="Lo0-Ix-Hi2"/>

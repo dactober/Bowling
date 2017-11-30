@@ -10,7 +10,6 @@
 
 
 @implementation BWLScoreGridView
-
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -30,6 +29,34 @@
         [[NSBundle mainBundle] loadNibNamed:@"BWLScoreGridViewXIB" owner:self options:nil];
         [self addSubview:self.scoreGridView];
         self.scoreGridView.frame=self.bounds;
+}
+
+- (BOOL)isEmptyFirstAttemp {
+    if ([self.firstAttemp.text isEqualToString:@""]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (void)setAttemp:(NSInteger)score {
+    
+}
+
+- (void)setFirstAttemptScore:(NSInteger)score {
+    self.firstAttemp.text = [self stringWithInteger:score];
+}
+
+- (void)setSecondAttemptScore:(NSInteger)score {
+    self.secondAttemp.text = [self stringWithInteger:score];
+}
+
+- (void)setResultScore:(NSInteger)score {
+    self.result.text = [self stringWithInteger:score];
+}
+
+- (NSString *)stringWithInteger:(NSInteger)number {
+    return [NSString stringWithFormat:@"%ld",(long)number];
 }
 
 @end

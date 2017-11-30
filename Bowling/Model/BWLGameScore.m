@@ -11,103 +11,100 @@
 #import "BWLFrame.h"
 #import "BWLSpareFrame.h"
 @interface BWLGameScore ()
-@property (nonatomic, strong)BWLStrikeFrame *strikeFrame;
-@property (nonatomic, strong)NSMutableArray *strikeFrames;
+@property (nonatomic, strong)NSMutableArray<BWLStrikeFrame *> *currentStrikeSequence;
 @property (nonatomic, strong)BWLFrame *frame;
-@property (nonatomic, strong)BWLSpareFrame *spareFrame;
-@property (nonatomic, strong)NSMutableArray *spareFrames;
+@property (nonatomic, strong)NSMutableArray<BWLSpareFrame *> *curentSpareSequence;
 @end
 
 @implementation BWLGameScore
-
+static int const kStrike = 10;
+static int const kLastAttemp = 3;
+static int const kLastFrameAttemp = kLastAttemp - 1;
+static int const kFirstFrameAttemp = 1;
+static int const kOneFrameAttemp = 1;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.strikeFrames = [NSMutableArray new];
-        self.spareFrames = [NSMutableArray new];
+        self.currentStrikeSequence = [NSMutableArray new];
+        self.curentSpareSequence = [NSMutableArray new];
     }
     return self;
 }
 
-- (void)createFrame:(FrameType)frameType withScore:(NSInteger)score withNumberOfGrid:(NSInteger)numberOfGrid andBlock:(void (^)(NSInteger, NSInteger))block {
-    
-    switch (frameType) {
+- (void)addBowlingFrame:(BowlingFrameType)bowlingFrameType withScore:(NSInteger)score withIndex:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block {
+    switch (bowlingFrameType) {
         case Strike: {
-            for (int i = 0;i < self.strikeFrames.count;i++) {
-                BWLStrikeFrame *frame = self.strikeFrames[i];
-                frame.attemp += 1;
-                frame.score += 10;
-                if (frame.attemp == 3) {
-                    block(frame.score, frame.numberOfGrid);
-                }
-                
-            }
-                self.strikeFrame = [BWLStrikeFrame new];
-                [self.strikeFrames addObject:self.strikeFrame];
-                self.strikeFrame.score = 10;
-                self.strikeFrame.numberOfGrid = numberOfGrid;
-                self.strikeFrame.attemp += 1;
-                break;
-        }
-        case Spare: {
-            
+            [self updateStrikeFrame:score withBlock:block];
+            [self updateSpareFrame:score withBlock:block];
+            BWLStrikeFrame *strikeFrame = [BWLStrikeFrame new];
+            [self.currentStrikeSequence addObject:strikeFrame];
+            strikeFrame.score = score;
+            strikeFrame.index = index;
+            strikeFrame.attemp += kOneFrameAttemp;
             break;
         }
         case Frame: {
             if (self.frame == nil) {
                 self.frame = [BWLFrame new];
-                
                 self.frame.firstScore = score;
             } else {
                 self.frame.secondScore = score;
-                if (self.frame.firstScore + self.frame.secondScore == 10) {
-                    self.spareFrame = [BWLSpareFrame new];
-                    [self.spareFrames addObject:self.spareFrame];
-                    self.spareFrame.attemp = 2;
-                    self.spareFrame.numberOfGrid = numberOfGrid;
+                if (self.frame.firstScore + self.frame.secondScore == kStrike) {
+                    BWLSpareFrame *spareFrame = [self createSpareFrame:index];
+                    [self.curentSpareSequence addObject:spareFrame];
                 }
             }
-            
-            self.frame.score += score;
-            self.frame.attemp +=1;
-           
-            if (self.spareFrames.count != 0) {
-                for (int i = 0;i < self.spareFrames.count;i++) {
-                    BWLSpareFrame *frame = self.spareFrames[i];
-                    frame.attemp += 1;
-                    frame.score += score;                           //spare
-                    if (frame.attemp == 3) {
-                        block(frame.score, frame.numberOfGrid);
-                    }
-                }
-            }
-            
-            if (self.strikeFrames.count != 0) {
-                for (int i = 0;i < self.strikeFrames.count;i++) {
-                    BWLStrikeFrame *frame = self.strikeFrames[i];
-                    frame.attemp += 1;
-                    frame.score += score;
-                    if (frame.attemp == 3) {
-                        block(frame.score, frame.numberOfGrid);
-                    }
-                }
-            }
-            
-            if (self.frame.attemp == 2) {
-                block(self.frame.score, numberOfGrid);
-                self.frame = nil;
-            }
+            [self updateBowlingFrame:score index:index withBlock:block];
             break;
         }
         default:
             break;
     }
-    
-
 }
 
-- (void)updateFrame {
-    
+- (BWLSpareFrame *)createSpareFrame:(NSInteger)index {
+    BWLSpareFrame *spareFrame = [BWLSpareFrame new];
+    spareFrame.attemp = kFirstFrameAttemp;
+    spareFrame.index = index;
+    return spareFrame;
+}
+
+- (void)updateBowlingFrame:(NSInteger)score index:(NSInteger)index withBlock:(void (^)(NSInteger, NSInteger))block{
+    self.frame.score += score;
+    self.frame.attemp += kOneFrameAttemp;
+    [self updateStrikeFrame:score withBlock:block];
+    [self updateSpareFrame:self.frame.score withBlock:block];
+    if (self.frame.attemp == kLastFrameAttemp) {
+        if (self.curentSpareSequence.count == 0) {
+            block(self.frame.score, index);
+        }
+        self.frame = nil;
+    }
+}
+
+- (void)updateStrikeFrame:(NSInteger)score withBlock:(void (^)(NSInteger, NSInteger))block{
+    for (int i = 0;i < self.currentStrikeSequence.count;i++) {
+        BWLStrikeFrame *frame = self.currentStrikeSequence[i];
+        frame.attemp += kOneFrameAttemp;
+        frame.score += score;
+        if (frame.attemp == kLastAttemp) {
+            block(frame.score, frame.index);
+            [self.currentStrikeSequence removeObjectAtIndex:i];
+            i--;
+        }
+    }
+}
+
+- (void)updateSpareFrame:(NSInteger)score withBlock:(void (^)(NSInteger, NSInteger))block{
+    for (int i = 0;i < self.curentSpareSequence.count;i++) {
+        BWLSpareFrame *frame = self.curentSpareSequence[i];
+        frame.attemp += kOneFrameAttemp;
+        frame.score += score;
+        if (frame.attemp == kLastAttemp) {
+            block(frame.score, frame.index);
+            [self.curentSpareSequence removeObjectAtIndex:i];
+        }
+    }
 }
 
 @end

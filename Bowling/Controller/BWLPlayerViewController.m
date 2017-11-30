@@ -27,8 +27,8 @@ typedef void (^ButtonBlock)(UIButton *);
 @property (strong, nonatomic) BWLScoreGridResultView *scoreGridResultView;
 @property (strong, nonatomic) BWLScoreCard *playerCard;
 @property (strong, nonatomic) NSMutableArray *views;
-@property (strong, nonatomic) NSMutableArray *buttons;
-@property (nonatomic) NSInteger numberOfGrid;
+@property (strong, nonatomic) NSMutableDictionary *buttons;
+@property (nonatomic) NSInteger index;
 @property (strong, nonatomic) NSDictionary *titlesForButtonsMapping;
 @end
 
@@ -36,6 +36,7 @@ typedef void (^ButtonBlock)(UIButton *);
 
 const static int kGridCount = 10;
 const static int kLastGridIndex = kGridCount - 1;
+const static int kSpare = 10;
 - (id)initWithPlayer:(BWLScoreCard *)card {
     self = [super init];
     if (self) {
@@ -49,9 +50,9 @@ const static int kLastGridIndex = kGridCount - 1;
 - (void)customInit {
     self.playerView = [[BWLPlayerView alloc]init];
     [self.playerView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.numberOfGrid = 0;
+    self.index = 0;
     self.views = [NSMutableArray new];
-    
+    self.buttons = [NSMutableDictionary new];
 }
 
 - (NSDictionary *)titlesForButtonsMapping {
@@ -108,60 +109,112 @@ const static int kLastGridIndex = kGridCount - 1;
         self.containerView = containerView;
     }
     [self addButtonsWithType:buttonType andContainerView:containerView];
+    self.buttons[@(buttonType)] = containerView;
 }
 
 - (UIView *)createContainerView {
     UIView * view = [[UIView alloc]init];
     [view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [view setBackgroundColor:[UIColor grayColor]];
     return view;
 }
 
 - (void)addButtonsWithType:(ButtonType)buttonType andContainerView:(UIView *)containerView {
     __weak typeof(self) _self_weak = self;
     ButtonBlock buttonBlock = ^(UIButton *button) {
-        [_self_weak fillFrame:button];
+        [_self_weak fillBowlingFrame:button];
     };
     BWLButtonsComponent *buttonComponent = [[BWLTopButtonsComponent alloc] initWithContainerView:containerView titles:self.titlesForButtonsMapping[@(buttonType)] withBlock:buttonBlock];
     [buttonComponent addBWLButtons];
 }
 
-- (void)fillFrame:(UIButton *)button {
-    NSInteger i = [button.titleLabel.text intValue];
-    BWLScoreGridView *grid = self.views[self.numberOfGrid];
-    //self.playerCard.score += i;
-    FrameType type =  [self.playerCard updateGameScore:i  withNumberOfGrid:self.numberOfGrid andBlock:^(NSInteger score, NSInteger numberOfGrid) {
-        BWLScoreGridView *grid = self.views[numberOfGrid];
-        self.playerCard.score += score;
-        grid.result.text = [NSString stringWithFormat:@"%ld",(long)self.playerCard.score];
+- (void)fillBowlingFrame:(UIButton *)button {
+    NSInteger score = [button.titleLabel.text intValue];
+    if (self.index < kLastGridIndex) {
+        BWLScoreGridView *grid = self.views[self.index];
+        if (grid.score + score <= kSpare) {
+            grid.score += score;
+            [self fillGridView:score withScoreGridView:grid];
+        } else return;
+    } else {
+        BWLScoreGridResultView *grid = self.views[self.index];
+        [self fillGridResultView:score withScoreGridResultView:grid];
+    }
+}
+
+- (void)fillGridView:(NSInteger)score withScoreGridView:(BWLScoreGridView *)grid {
+    BowlingFrameType type =  [self.playerCard updateGameScore:score  withIndex:self.index andBlock:^(NSInteger score, NSInteger index) {
+        [self fillResult:score index:index];
     }];
     if (type == Strike) {
-        grid.firstAttempt.text = @"X";
-        self.numberOfGrid++;
+        [grid setFirstAttemptScore:score];//
+        self.index++;
     }
     if (type == Frame) {
-        if ([grid.firstAttempt.text isEqualToString:@""]) {
-            grid.firstAttempt.text = [NSString stringWithFormat:@"%ld",(long)i];
+        if ([grid isEmptyFirstAttemp]) {
+            [grid setFirstAttemptScore:score];
         } else {
-            grid.secondAttemp.text = [NSString stringWithFormat:@"%ld",(long)i];
-            self.numberOfGrid++;
+            [grid setSecondAttemptScore:score];
+            self.index++;
         }
-        
     }
-    
-//    if (i < kGridCount) {
-//        if ([grid.firstAttempt.text isEqualToString:@""]) {
-//
-//        } else {
-//
-//            grid.result.text = [NSString stringWithFormat:@"%ld",(long)self.playerCard.score];
-//            self.numberOfGrid++;
-//        }
-//    } else {
-//        grid.firstAttempt.text = button.titleLabel.text;
-//        grid.result.text = [NSString stringWithFormat:@"%ld",(long)self.playerCard.score];
-//        self.numberOfGrid++;
-//    }
+}
+
+- (void)fillGridResultView:(NSInteger)score withScoreGridResultView:(BWLScoreGridResultView *)grid {
+    BowlingFrameType type =  [self.playerCard updateGameScore:score  withIndex:self.index andBlock:^(NSInteger score, NSInteger index) {
+        [self fillResultForGridResult:score index:index];
+    }];
+    if (type == Strike) {
+        if ([grid isEmptyFirstAttemp]) {
+            [grid setFirstAttempScore:score];
+        } else if ([grid isEmptySecondAttemp]){
+            [grid setSecondAttempScore:score];//
+        } else {
+            [grid setThirdAttempScore:score];
+            [self hideContainers];
+        }
+    }
+    if (type == Frame) {
+        if ([grid isEmptyFirstAttemp]) {
+            [grid setFirstAttempScore:score];
+            grid.score += score;
+        } else if ([grid isEmptySecondAttemp]) {
+            [grid setSecondAttempScore:score];//
+            grid.score += score;
+            if (grid.score < kSpare) {
+                [self hideContainers];
+            }
+        } else {
+            [grid setThirdAttempScore:score];
+            [self hideContainers];
+        }
+    }
+}
+
+- (void)fillResult:(NSInteger)score index:(NSInteger)index{
+    BWLScoreGridView *grid = self.views[index];
+    self.playerCard.score += score;
+    [grid setResultScore:self.playerCard.score];
+}
+
+- (void)fillResultForGridResult:(NSInteger)score index:(NSInteger)index{
+    BWLScoreGridResultView *grid = self.views[index];
+    self.playerCard.score += score;
+    [grid setResultScore:self.playerCard.score];
+}
+
+- (void)hideContainers {
+    UIView *firstContainer = self.buttons[@(TopButtonType)];
+    UIView *secondContainer = self.buttons[@(BottomButtonType)];
+    firstContainer.hidden = YES;
+    secondContainer.hidden = YES;
+    [self addResultLabel];
+}
+
+- (void)addResultLabel {
+    UILabel *label = [UILabel new];
+    [self.playerView addSubview:label];
+    label.keepTopOffsetTo([self.views firstObject]).equal = KeepRequired(0);
+    label.text = [NSString stringWithFormat:@"%ld",(long)self.playerCard.score];
 }
 
 @end

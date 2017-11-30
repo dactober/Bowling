@@ -66,11 +66,6 @@
     if (self.scoreInputAction != nil) {
         self.scoreInputAction(self.scoreInputButton);
     }
-    if([sender.titleLabel.text isEqualToString:@"10"]){
-        BWLStrikeFrame *strike = [BWLStrikeFrame new];
-    } else {
-        BWLFrame *frame = [BWLFrame new];
-    }
     NSLog(@"%@",sender.titleLabel.text );
 }
 

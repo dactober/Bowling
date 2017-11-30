@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM (NSInteger, FrameType) {
+typedef NS_ENUM (NSInteger, BowlingFrameType) {
     Strike,
     Spare,
     Frame
@@ -17,6 +17,5 @@ typedef NS_ENUM (NSInteger, FrameType) {
 
 @interface BWLGameScore : NSObject
 @property (nonatomic) NSInteger score;
-- (void)createFrame:(FrameType)frameType withScore:(NSInteger)score withNumberOfGrid:(NSInteger)numberOfGrid andBlock:(void(^)(NSInteger, NSInteger))block;
-- (void)updateFrame;
+- (void)addBowlingFrame:(BowlingFrameType)frameType withScore:(NSInteger)score withIndex:(NSInteger)index andBlock:(void(^)(NSInteger, NSInteger))block;
 @end

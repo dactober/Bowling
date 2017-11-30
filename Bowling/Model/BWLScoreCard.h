@@ -17,5 +17,5 @@
 - (void)printScore;
 - (id)initWithName:(NSString*)name;
 @property (strong, nonatomic)BWLGameScore *gameScore;
-- (FrameType)updateGameScore:(NSInteger)score withNumberOfGrid:(NSInteger)numberOfGrid andBlock:(void(^)(NSInteger, NSInteger))block;
+- (BowlingFrameType)updateGameScore:(NSInteger)score withIndex:(NSInteger)index andBlock:(void(^)(NSInteger, NSInteger))block;
 @end
