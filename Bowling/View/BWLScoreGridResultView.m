@@ -8,6 +8,13 @@
 
 #import "BWLScoreGridResultView.h"
 
+@interface BWLScoreGridResultView()
+@property (strong, nonatomic) IBOutlet UIView *scoreGridView;
+@property (weak, nonatomic) IBOutlet UILabel *firstAttemp;
+@property (weak, nonatomic) IBOutlet UILabel *secondAttemp;
+@property (weak, nonatomic) IBOutlet UILabel *thirdAttemp;
+@end
+
 @implementation BWLScoreGridResultView
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -32,15 +39,15 @@
     self.scoreGridView.frame=self.bounds;
 }
 
-- (void)setFirstAttempScore:(NSInteger)score {
+- (void)setFirstAttemptScore:(NSInteger)score {
         self.firstAttemp.text = [self stringWithInteger:score];
 }
 
-- (void)setSecondAttempScore:(NSInteger)score {
+- (void)setSecondAttemptScore:(NSInteger)score {
     self.secondAttemp.text = [self stringWithInteger:score];
 }
 
-- (void)setThirdAttempScore:(NSInteger)score {
+- (void)setThirdAttemptScore:(NSInteger)score {
     self.thirdAttemp.text = [self stringWithInteger:score];
 }
 
@@ -48,7 +55,7 @@
     self.result.text = [self stringWithInteger:score];
 }
 
-- (BOOL)isEmptyFirstAttemp {
+- (BOOL)isEmptyFirstAttempt {
     if ([self.firstAttemp.text isEqualToString:@""]) {
         return YES;
     } else {
@@ -56,7 +63,7 @@
     }
 }
 
-- (BOOL)isEmptySecondAttemp {
+- (BOOL)isEmptySecondAttempt {
     if ([self.secondAttemp.text isEqualToString:@""]) {
         return YES;
     } else {

@@ -11,9 +11,6 @@
 #import "BWLScoreInputView.h"
 #import "BWLTopButtonsComponent.h"
 #import "BWLBottomButonsComponent.h"
-#import "BWLStrikeFrame.h"
-#import "BWLSpareFrame.h"
-#import "BWLFrame.h"
 
 typedef NS_ENUM (NSInteger, ButtonType) {
     TopButtonType,
@@ -127,30 +124,31 @@ const static int kSpare = 10;
     [buttonComponent addBWLButtons];
 }
 
+#pragma mark - Score counting
 - (void)fillBowlingFrame:(UIButton *)button {
     NSInteger score = [button.titleLabel.text intValue];
     if (self.index < kLastGridIndex) {
         BWLScoreGridView *grid = self.views[self.index];
         if (grid.score + score <= kSpare) {
             grid.score += score;
-            [self fillGridView:score withScoreGridView:grid];
+            [self fillScore:score toGridView:grid];
         } else return;
     } else {
         BWLScoreGridResultView *grid = self.views[self.index];
-        [self fillGridResultView:score withScoreGridResultView:grid];
+        [self fillScore:score toGridResultView:grid];
     }
 }
 
-- (void)fillGridView:(NSInteger)score withScoreGridView:(BWLScoreGridView *)grid {
+- (void)fillScore:(NSInteger)score toGridView:(BWLScoreGridView *)grid {
     BowlingFrameType type =  [self.playerCard updateGameScore:score  withIndex:self.index andBlock:^(NSInteger score, NSInteger index) {
         [self fillResult:score index:index];
     }];
-    if (type == Strike) {
+    if (type == BowlingFrameStrike) {
         [grid setFirstAttemptScore:score];//
         self.index++;
     }
-    if (type == Frame) {
-        if ([grid isEmptyFirstAttemp]) {
+    if (type == BowlingFrameStandartFrame) {
+        if ([grid isEmptyFirstAttempt]) {
             [grid setFirstAttemptScore:score];
         } else {
             [grid setSecondAttemptScore:score];
@@ -159,33 +157,33 @@ const static int kSpare = 10;
     }
 }
 
-- (void)fillGridResultView:(NSInteger)score withScoreGridResultView:(BWLScoreGridResultView *)grid {
+- (void)fillScore:(NSInteger)score toGridResultView:(BWLScoreGridResultView *)grid {
     BowlingFrameType type =  [self.playerCard updateGameScore:score  withIndex:self.index andBlock:^(NSInteger score, NSInteger index) {
         [self fillResultForGridResult:score index:index];
     }];
-    if (type == Strike) {
-        if ([grid isEmptyFirstAttemp]) {
+    if (type == BowlingFrameStrike) {
+        if ([grid isEmptyFirstAttempt]) {
             grid.score += score;
-            [grid setFirstAttempScore:score];
-        } else if ([grid isEmptySecondAttemp]){
-            [grid setSecondAttempScore:score];//
+            [grid setFirstAttemptScore:score];
+        } else if ([grid isEmptySecondAttempt]){
+            [grid setSecondAttemptScore:score];//
         } else {
-            [grid setThirdAttempScore:score];
+            [grid setThirdAttemptScore:score];
             [self hideContainers];
         }
     }
-    if (type == Frame) {
-        if ([grid isEmptyFirstAttemp]) {
-            [grid setFirstAttempScore:score];
+    if (type == BowlingFrameStandartFrame) {
+        if ([grid isEmptyFirstAttempt]) {
+            [grid setFirstAttemptScore:score];
             grid.score += score;
-        } else if ([grid isEmptySecondAttemp]) {
-            [grid setSecondAttempScore:score];
+        } else if ([grid isEmptySecondAttempt]) {
+            [grid setSecondAttemptScore:score];
             grid.score += score;
             if (grid.score < kSpare) {
                 [self hideContainers];
             }
         } else {
-            [grid setThirdAttempScore:score];
+            [grid setThirdAttemptScore:score];
             [self hideContainers];
         }
     }

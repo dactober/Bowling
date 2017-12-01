@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM (NSInteger, BowlingFrameType) {
-    Strike,
-    Spare,
-    Frame
+    BowlingFrameStrike,
+    BowlingFrameSpare,
+    BowlingFrameStandartFrame
     
 };
 @interface BWLCommonFrame : NSObject

@@ -8,6 +8,12 @@
 
 #import "BWLScoreGridView.h"
 
+@interface BWLScoreGridView ()
+@property (strong, nonatomic) IBOutlet UIView *scoreGridView;
+@property (weak, nonatomic) IBOutlet UILabel *firstAttemp;
+@property (weak, nonatomic) IBOutlet UILabel *secondAttemp;
+@property (weak, nonatomic) IBOutlet UILabel *result;
+@end
 
 @implementation BWLScoreGridView
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -31,16 +37,12 @@
         self.scoreGridView.frame=self.bounds;
 }
 
-- (BOOL)isEmptyFirstAttemp {
+- (BOOL)isEmptyFirstAttempt {
     if ([self.firstAttemp.text isEqualToString:@""]) {
         return YES;
     } else {
         return NO;
     }
-}
-
-- (void)setAttemp:(NSInteger)score {
-    
 }
 
 - (void)setFirstAttemptScore:(NSInteger)score {

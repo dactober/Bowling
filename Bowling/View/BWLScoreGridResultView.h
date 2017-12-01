@@ -9,16 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface BWLScoreGridResultView : UIView
-@property (strong, nonatomic) IBOutlet UIView *scoreGridView;
-@property (weak, nonatomic) IBOutlet UILabel *firstAttemp;
-@property (weak, nonatomic) IBOutlet UILabel *secondAttemp;
-@property (weak, nonatomic) IBOutlet UILabel *thirdAttemp;
+
 @property (weak, nonatomic) IBOutlet UILabel *result;
 @property (nonatomic)NSInteger score;
-- (BOOL)isEmptyFirstAttemp;
-- (BOOL)isEmptySecondAttemp;
-- (void)setFirstAttempScore:(NSInteger)score;
-- (void)setSecondAttempScore:(NSInteger)score;
-- (void)setThirdAttempScore:(NSInteger)score;
+- (BOOL)isEmptyFirstAttempt;
+- (BOOL)isEmptySecondAttempt;
+- (void)setFirstAttemptScore:(NSInteger)score;
+- (void)setSecondAttemptScore:(NSInteger)score;
+- (void)setThirdAttemptScore:(NSInteger)score;
 - (void)setResultScore:(NSInteger)score;
 @end

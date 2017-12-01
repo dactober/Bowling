@@ -19,7 +19,7 @@
 @end
 
 @implementation BWLGameScore
-static int const kStrike = 10;
+static int const kSpare = 10;
 static int const kLastAttemp = 3;
 static int const kLastFrameAttemp = kLastAttemp - 1;
 
@@ -34,31 +34,35 @@ static int const kLastFrameAttemp = kLastAttemp - 1;
 
 - (BowlingFrameType)addBowlingFrameWithScore:(NSInteger)score index:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block {
     BOOL isSpare = NO;
+    NSArray *strikeList = [NSArray arrayWithArray:self.currentStrikeSequence];
+    NSArray *spareList = [NSArray arrayWithArray:self.curentSpareSequence];
     BWLCommonFrame *commonFrame = [[BWLCommonFrame alloc]initWithScore:score index:index];
-    if (commonFrame.type == Strike) {
-        [self updateStrikeFrame:score withBlock:block];
-        [self updateSpareFrame:score withBlock:block];
+    if (commonFrame.type == BowlingFrameStrike) {
+        [self updateFrameWithSequence:strikeList score:score isStrike:YES withBlock:block];
+        [self updateFrameWithSequence:spareList score:score isStrike:NO withBlock:block];
         [self.currentStrikeSequence addObject:commonFrame];
     } else {
         if (self.commonBowlingFrame == nil) {
             self.commonBowlingFrame = commonFrame;
         } else {
             [self.commonBowlingFrame addScore:score];
-            if (self.commonBowlingFrame.score == kStrike) {
+            if (self.commonBowlingFrame.score == kSpare) {
                 BWLCommonFrame *spareFrame = self.commonBowlingFrame;
                 [self.curentSpareSequence addObject:spareFrame];
                 isSpare = YES;
             }
         }
-        [self updateBowlingFrame:score index:index isSpare:isSpare withBlock:block];
+        [self updateStandartBowlingFrame:score index:index isSpare:isSpare withBlock:block];
     }
     return commonFrame.type;
 }
 
-- (void)updateBowlingFrame:(NSInteger)score index:(NSInteger)index isSpare:(BOOL)isSpare withBlock:(void (^)(NSInteger, NSInteger))block {
-    [self updateStrikeFrame:score withBlock:block];
+- (void)updateStandartBowlingFrame:(NSInteger)score index:(NSInteger)index isSpare:(BOOL)isSpare withBlock:(void (^)(NSInteger, NSInteger))block {
+    NSArray *strikeList = [NSArray arrayWithArray:self.currentStrikeSequence];
+    [self updateFrameWithSequence:strikeList score:score isStrike:YES withBlock:block];
     if (!isSpare) {
-        [self updateSpareFrame:self.commonBowlingFrame.score withBlock:block];
+        NSArray *spareList = [NSArray arrayWithArray:self.curentSpareSequence];
+        [self updateFrameWithSequence:spareList score:self.commonBowlingFrame.score isStrike:NO withBlock:block];
     }
     if (self.commonBowlingFrame.attemp == kLastFrameAttemp) {
         if (!isSpare) {
@@ -68,24 +72,17 @@ static int const kLastFrameAttemp = kLastAttemp - 1;
     }
 }
 
-- (void)updateStrikeFrame:(NSInteger)score withBlock:(void (^)(NSInteger, NSInteger))block {
-    NSArray *strikeList = [NSArray arrayWithArray:self.currentStrikeSequence];
-    for (BWLCommonFrame *frame in strikeList) {
+- (void)updateFrameWithSequence:(NSArray *)array score:(NSInteger)score isStrike:(BOOL)isStrike withBlock:(void (^)(NSInteger, NSInteger))block {
+    for (BWLCommonFrame *frame in array) {
         [frame addScore:score];
         if (frame.attemp == kLastAttemp) {
             block(frame.score, frame.index);
-            [self.currentStrikeSequence removeObject:frame];
-        }
-    }
-}
-
-- (void)updateSpareFrame:(NSInteger)score withBlock:(void (^)(NSInteger, NSInteger))block {
-    NSArray *spareList = [NSArray arrayWithArray:self.curentSpareSequence];
-    for (BWLCommonFrame *frame in spareList) {
-        [frame addScore:score];
-        if (frame.attemp == kLastAttemp) {
-            block(frame.score, frame.index);
-            [self.curentSpareSequence removeObject:frame];
+            if (isStrike) {
+                [self.currentStrikeSequence removeObject:frame];
+            } else {
+                [self.curentSpareSequence removeObject:frame];
+            }
+            
         }
     }
 }

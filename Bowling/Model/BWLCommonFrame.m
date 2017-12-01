@@ -29,13 +29,13 @@ static int const kFrameAttemp = 1;
 - (BowlingFrameType)type {
     if (self.score != 10) {
         if (self.attemp == kFrameAttemp) {
-            return Frame;
+            return BowlingFrameStandartFrame;
         } else if (self.attemp == 2) {
-            return Spare;
+            return BowlingFrameSpare;
         }
     }
     
-    return Strike;
+    return BowlingFrameStrike;
 }
 
 - (NSInteger)attemp {
