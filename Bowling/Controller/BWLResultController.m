@@ -44,7 +44,7 @@
     CustomCellForResult *cell = (CustomCellForResult *)[tableView dequeueReusableCellWithIdentifier:resultIdentificator forIndexPath:indexPath];
     BWLScoreCard *scoreCard = self.playersCards[indexPath.row];
     cell.title.text = scoreCard.playerName;
-    cell.score.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    cell.score.text = [NSString stringWithFormat:@"%ld",(long)scoreCard.score];
     return cell;
 }
 

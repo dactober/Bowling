@@ -33,21 +33,21 @@ const static int kTopOffsetToSuperView = 0;
 }
 
 - (void)updateConstraintsForContainerView:(UIView *)view {
-    [self.playerView addConstraint:[NSLayoutConstraint constraintWithItem:view
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:view
                                                                 attribute:NSLayoutAttributeLeft
                                                                 relatedBy:NSLayoutRelationEqual
-                                                                   toItem:self.playerView
+                                                                   toItem:self.view
                                                                 attribute:NSLayoutAttributeLeft
                                                                multiplier:1.0
                                                                  constant:10]];
-    [self.playerView addConstraint:[NSLayoutConstraint constraintWithItem:view
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:view
                                                                 attribute:NSLayoutAttributeRight
                                                                 relatedBy:NSLayoutRelationEqual
-                                                                   toItem:self.playerView
+                                                                   toItem:self.view
                                                                 attribute:NSLayoutAttributeRight
                                                                multiplier:1.0
                                                                  constant:-10]];
-    [self.playerView addConstraint:[NSLayoutConstraint constraintWithItem:view
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:view
                                                                 attribute:NSLayoutAttributeHeight
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:nil
@@ -58,15 +58,15 @@ const static int kTopOffsetToSuperView = 0;
 
 - (void)topOffsetBetweenContainerView:(UIView *)firstView andContainerViewForKeep:(UIView *)secondView {
     if(firstView == nil) {
-        [self.playerView addConstraint:[NSLayoutConstraint constraintWithItem:secondView
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:secondView
                                                                     attribute:NSLayoutAttributeTop
                                                                     relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.playerView
+                                                                       toItem:self.view
                                                                     attribute:NSLayoutAttributeTop
                                                                    multiplier:1.0
                                                                      constant:0]];
     } else {
-        [self.playerView addConstraint:[NSLayoutConstraint constraintWithItem:secondView
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:secondView
                                                                     attribute:NSLayoutAttributeTop
                                                                     relatedBy:NSLayoutRelationEqual
                                                                        toItem:firstView

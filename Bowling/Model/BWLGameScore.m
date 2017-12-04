@@ -7,7 +7,6 @@
 //
 
 #import "BWLGameScore.h"
-
 #import "BWLFrame.h"
 #import "BWLSpareFrame.h"
 

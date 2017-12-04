@@ -127,8 +127,8 @@ enum RowType {
 }
 
 - (IBAction)startGameButton:(id)sender {
-    BWLGameController *res = [[BWLGameController alloc]initWithScoreCards:self.playersCards];
-    [self.navigationController pushViewController:res animated:YES];
+    BWLGameController *gameStart = [[BWLGameController alloc]initWithScoreCards:self.playersCards];
+    [self.navigationController pushViewController:gameStart animated:YES];
 }
 
 - (void)createScoreCard:(CustomCellForTextField *)cell {

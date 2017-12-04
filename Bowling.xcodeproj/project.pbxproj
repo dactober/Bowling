@@ -28,7 +28,6 @@
 		8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8463ABD91FBC48D000D969BC /* BWLScoreGridViewXIB.xib */; };
 		8463C4811FC6FCDE008B7B68 /* BWLStrikeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463C4801FC6FCDE008B7B68 /* BWLStrikeFrame.m */; };
 		8463C4841FC6FCEE008B7B68 /* BWLSpareFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463C4831FC6FCEE008B7B68 /* BWLSpareFrame.m */; };
-		846846FD1FC812F700C0B630 /* BWLPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846846FC1FC812F700C0B630 /* BWLPlayerView.m */; };
 		846847001FC8130E00C0B630 /* BWLPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846846FF1FC8130E00C0B630 /* BWLPlayerViewController.m */; };
 		846A84421FC4799E00AB67F6 /* BWLButtonsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */; };
 		847C9CC91FC57C3900393001 /* BWLRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C9CC81FC57C3900393001 /* BWLRegistrationController.m */; };
@@ -80,8 +79,6 @@
 		8463C4801FC6FCDE008B7B68 /* BWLStrikeFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLStrikeFrame.m; sourceTree = "<group>"; };
 		8463C4821FC6FCEE008B7B68 /* BWLSpareFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLSpareFrame.h; sourceTree = "<group>"; };
 		8463C4831FC6FCEE008B7B68 /* BWLSpareFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLSpareFrame.m; sourceTree = "<group>"; };
-		846846FB1FC812F700C0B630 /* BWLPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLPlayerView.h; sourceTree = "<group>"; };
-		846846FC1FC812F700C0B630 /* BWLPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLPlayerView.m; sourceTree = "<group>"; };
 		846846FE1FC8130E00C0B630 /* BWLPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLPlayerViewController.h; sourceTree = "<group>"; };
 		846846FF1FC8130E00C0B630 /* BWLPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLPlayerViewController.m; sourceTree = "<group>"; };
 		846A84401FC4799E00AB67F6 /* BWLButtonsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLButtonsComponent.h; sourceTree = "<group>"; };
@@ -100,6 +97,7 @@
 		8489F6121FBDDB23005156ED /* BWLScoreInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLScoreInputView.m; sourceTree = "<group>"; };
 		84B770491FD03ED200BDBF31 /* BWLCommonFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLCommonFrame.h; sourceTree = "<group>"; };
 		84B7704A1FD03ED200BDBF31 /* BWLCommonFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLCommonFrame.m; sourceTree = "<group>"; };
+		84B7704C1FD55B4200BDBF31 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bowling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -158,6 +156,7 @@
 		842E55DD1FBB4E8C00F469D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84B7704C1FD55B4200BDBF31 /* MapKit.framework */,
 				842E55DE1FBB4E8C00F469D2 /* UIKit.framework */,
 				DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */,
 			);
@@ -221,8 +220,6 @@
 				844456C31FC6CF8200048C50 /* CustomCellForResult.h */,
 				844456C41FC6CF8200048C50 /* CustomCellForResult.m */,
 				844456C51FC6CF8200048C50 /* CustomCellForResult.xib */,
-				846846FB1FC812F700C0B630 /* BWLPlayerView.h */,
-				846846FC1FC812F700C0B630 /* BWLPlayerView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -391,7 +388,6 @@
 				846A84421FC4799E00AB67F6 /* BWLButtonsComponent.m in Sources */,
 				842E55D71FBB4E8100F469D2 /* main.m in Sources */,
 				847C9CC91FC57C3900393001 /* BWLRegistrationController.m in Sources */,
-				846846FD1FC812F700C0B630 /* BWLPlayerView.m in Sources */,
 				844456C61FC6CF8200048C50 /* CustomCellForResult.m in Sources */,
 				84B7704B1FD03ED200BDBF31 /* BWLCommonFrame.m in Sources */,
 				8463C4841FC6FCEE008B7B68 /* BWLSpareFrame.m in Sources */,
