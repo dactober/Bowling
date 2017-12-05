@@ -11,7 +11,6 @@
 #import "BWLRegistrationController.h"
 @interface BWLMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableDictionary *annotationMapping;
 @property (nonatomic) NSInteger buttonTag;
 @end
@@ -22,9 +21,9 @@
     [super viewDidLoad];
     self.annotationMapping = [NSMutableDictionary new];
     self.mapView.delegate = self;
-    self.locationManager = [[CLLocationManager alloc] init];
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [self.locationManager requestWhenInUseAuthorization];
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
     }
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc]
                                           initWithTarget:self action:@selector(handleLongPress:)];
@@ -95,7 +94,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

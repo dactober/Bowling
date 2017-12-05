@@ -8,6 +8,5 @@
 
 #import <UIKit/UIKit.h>
 #import "MapKit/MapKit.h"
-typedef void(^addressCompletionBlock)(NSString *);
 @interface BWLMapViewController : UIViewController <MKMapViewDelegate>
 @end
