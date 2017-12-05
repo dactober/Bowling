@@ -37,6 +37,7 @@
 		8488415C1FC426530030525F /* BWLBottomButonsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488415B1FC426530030525F /* BWLBottomButonsComponent.m */; };
 		8489F6131FBDDB23005156ED /* BWLScoreInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8489F6121FBDDB23005156ED /* BWLScoreInputView.m */; };
 		84B7704B1FD03ED200BDBF31 /* BWLCommonFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7704A1FD03ED200BDBF31 /* BWLCommonFrame.m */; };
+		84B7704F1FD5663A00BDBF31 /* BWLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7704E1FD5663A00BDBF31 /* BWLMapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,9 @@
 		84B770491FD03ED200BDBF31 /* BWLCommonFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLCommonFrame.h; sourceTree = "<group>"; };
 		84B7704A1FD03ED200BDBF31 /* BWLCommonFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLCommonFrame.m; sourceTree = "<group>"; };
 		84B7704C1FD55B4200BDBF31 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		84B7704D1FD5663A00BDBF31 /* BWLMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLMapViewController.h; sourceTree = "<group>"; };
+		84B7704E1FD5663A00BDBF31 /* BWLMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLMapViewController.m; sourceTree = "<group>"; };
+		84B770501FD56EB500BDBF31 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bowling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -156,6 +160,7 @@
 		842E55DD1FBB4E8C00F469D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84B770501FD56EB500BDBF31 /* CoreLocation.framework */,
 				84B7704C1FD55B4200BDBF31 /* MapKit.framework */,
 				842E55DE1FBB4E8C00F469D2 /* UIKit.framework */,
 				DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */,
@@ -196,6 +201,8 @@
 				846846FF1FC8130E00C0B630 /* BWLPlayerViewController.m */,
 				845E618E1FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.h */,
 				845E618F1FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.m */,
+				84B7704D1FD5663A00BDBF31 /* BWLMapViewController.h */,
+				84B7704E1FD5663A00BDBF31 /* BWLMapViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -381,6 +388,7 @@
 				8489F6131FBDDB23005156ED /* BWLScoreInputView.m in Sources */,
 				846847001FC8130E00C0B630 /* BWLPlayerViewController.m in Sources */,
 				845E61901FCD7ED6007B5203 /* BWLPlayerViewController+ViewConstraints.m in Sources */,
+				84B7704F1FD5663A00BDBF31 /* BWLMapViewController.m in Sources */,
 				842E55CC1FBB4E8100F469D2 /* BWLGameController.m in Sources */,
 				842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */,
 				842E55ED1FBB4EC400F469D2 /* BWLFrame.m in Sources */,

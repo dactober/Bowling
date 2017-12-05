@@ -128,6 +128,7 @@ enum RowType {
 
 - (IBAction)startGameButton:(id)sender {
     BWLGameController *gameStart = [[BWLGameController alloc]initWithScoreCards:self.playersCards];
+    [gameStart setTitle:self.title];
     [self.navigationController pushViewController:gameStart animated:YES];
 }
 

@@ -65,6 +65,7 @@ const static int kTrailingOffset = 0;
     BWLPlayerViewController *playerController = [[BWLPlayerViewController alloc]initWithPlayer:scoreCard andFinishBlock:^{
         if ([self isGameEnd]) {
             BWLResultController *resultViewController = [[BWLResultController alloc]initWithScoreCards:self.playersCards];
+            [resultViewController setTitle:self.title];
             [self.navigationController pushViewController:resultViewController animated:YES];
         }
     }];
