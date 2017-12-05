@@ -8,6 +8,5 @@
 
 #import "BWLResultController.h"
 @interface BWLResultController ()
-- (void)didSelectRowAtIndexPath:(NSIndexPath*)indexPath;
 
 @end

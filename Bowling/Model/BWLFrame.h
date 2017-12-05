@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface BWLFrame : NSObject
-
+@property (nonatomic)NSInteger score;
+@property (nonatomic)NSInteger attemp;
+@property (nonatomic)NSInteger firstScore;
+@property (nonatomic)NSInteger secondScore;
 @end

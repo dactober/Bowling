@@ -8,9 +8,11 @@
 
 #import "BWLScoreCard.h"
 
-@implementation BWLScoreCard {
-    
-}
+@interface BWLScoreCard()
+@end
+
+@implementation BWLScoreCard
+
 @synthesize playerName=_playerName;
 @synthesize score=_score;
 + (NSString*)title {
@@ -29,7 +31,12 @@
    self = [super init];
     if(self){
         self.playerName=name;
+        self.gameScore = [[BWLGameScore alloc]init];
     }
     return self;
+}
+
+- (BowlingFrameType)updateGameScore:(NSInteger)score withIndex:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block {
+        return [self.gameScore addBowlingFrameWithScore:score index:index andBlock:block];
 }
 @end

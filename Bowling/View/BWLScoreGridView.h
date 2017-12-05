@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface BWLScoreGridView : UIView
-@property (strong, nonatomic) IBOutlet UIView *scoreGridView;
 
+@property (nonatomic) NSInteger score;
+- (BOOL)isEmptyFirstAttempt;
+- (void)setFirstAttemptScore:(NSInteger)score;
+- (void)setSecondAttemptScore:(NSInteger)score;
+- (void)setResultScore:(NSInteger)score;
 @end

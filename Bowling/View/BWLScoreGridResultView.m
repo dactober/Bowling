@@ -8,13 +8,19 @@
 
 #import "BWLScoreGridResultView.h"
 
+@interface BWLScoreGridResultView()
+@property (strong, nonatomic) IBOutlet UIView *scoreGridView;
+@property (weak, nonatomic) IBOutlet UILabel *firstAttemp;
+@property (weak, nonatomic) IBOutlet UILabel *secondAttemp;
+@property (weak, nonatomic) IBOutlet UILabel *thirdAttemp;
+@end
+
 @implementation BWLScoreGridResultView
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self customInit];
-        
     }
     return self;
 }
@@ -32,12 +38,42 @@
     [self addSubview:self.scoreGridView];
     self.scoreGridView.frame=self.bounds;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
+- (void)setFirstAttemptScore:(NSInteger)score {
+        self.firstAttemp.text = [self stringWithInteger:score];
 }
-*/
+
+- (void)setSecondAttemptScore:(NSInteger)score {
+    self.secondAttemp.text = [self stringWithInteger:score];
+}
+
+- (void)setThirdAttemptScore:(NSInteger)score {
+    self.thirdAttemp.text = [self stringWithInteger:score];
+}
+
+- (void)setResultScore:(NSInteger)score {
+    self.result.text = [self stringWithInteger:score];
+}
+
+- (BOOL)isEmptyFirstAttempt {
+    if ([self.firstAttemp.text isEqualToString:@""]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)isEmptySecondAttempt {
+    if ([self.secondAttemp.text isEqualToString:@""]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (NSString *)stringWithInteger:(NSInteger)number {
+    return [NSString stringWithFormat:@"%ld",(long)number];
+}
+
 
 @end

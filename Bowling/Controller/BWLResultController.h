@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 @interface BWLResultController : UITableViewController <UITableViewDelegate,UITableViewDataSource>
-
+- (id)initWithScoreCards:(NSArray *)playersCards;
 @end

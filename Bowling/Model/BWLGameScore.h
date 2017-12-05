@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BWLCommonFrame.h"
+
 
 @interface BWLGameScore : NSObject
-
+@property (nonatomic) NSInteger score;
+- (BowlingFrameType)addBowlingFrameWithScore:(NSInteger)score index:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block;
 @end
