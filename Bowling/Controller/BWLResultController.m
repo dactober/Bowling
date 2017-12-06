@@ -21,6 +21,7 @@
     UINib *nib = [UINib nibWithNibName:@"CustomCellForResult" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"ResultID"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.navigationItem.hidesBackButton = YES;
 }
 
 - (id)initWithScoreCards:(NSArray *)playersCards {
