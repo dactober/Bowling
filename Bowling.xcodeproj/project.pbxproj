@@ -38,6 +38,7 @@
 		8489F6131FBDDB23005156ED /* BWLScoreInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8489F6121FBDDB23005156ED /* BWLScoreInputView.m */; };
 		84B7704B1FD03ED200BDBF31 /* BWLCommonFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7704A1FD03ED200BDBF31 /* BWLCommonFrame.m */; };
 		84B7704F1FD5663A00BDBF31 /* BWLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7704E1FD5663A00BDBF31 /* BWLMapViewController.m */; };
+		84B770531FD944D300BDBF31 /* BWLWinnerOfGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B770521FD944D300BDBF31 /* BWLWinnerOfGame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +64,6 @@
 		842E55E21FBB4EC300F469D2 /* BWLScoreCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWLScoreCard.m; sourceTree = "<group>"; };
 		842E55E31FBB4EC300F469D2 /* BWLFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWLFrame.m; sourceTree = "<group>"; };
 		842E55E41FBB4EC300F469D2 /* BWLFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLFrame.h; sourceTree = "<group>"; };
-		842E55E51FBB4EC300F469D2 /* BWLResultController_BWLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLResultController_BWLExtension.h; sourceTree = "<group>"; };
 		842E55E61FBB4EC300F469D2 /* BWLResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLResultController.h; sourceTree = "<group>"; };
 		842E55E71FBB4EC300F469D2 /* BWLFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLFrameView.h; sourceTree = "<group>"; };
 		842E55E81FBB4EC300F469D2 /* BWLGameScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWLGameScore.m; sourceTree = "<group>"; };
@@ -102,6 +102,8 @@
 		84B7704D1FD5663A00BDBF31 /* BWLMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLMapViewController.h; sourceTree = "<group>"; };
 		84B7704E1FD5663A00BDBF31 /* BWLMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLMapViewController.m; sourceTree = "<group>"; };
 		84B770501FD56EB500BDBF31 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		84B770511FD944D300BDBF31 /* BWLWinnerOfGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLWinnerOfGame.h; sourceTree = "<group>"; };
+		84B770521FD944D300BDBF31 /* BWLWinnerOfGame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLWinnerOfGame.m; sourceTree = "<group>"; };
 		DFD30B62C9876DEC79006AB5 /* libPods-Bowling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bowling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -183,6 +185,8 @@
 				8463C4831FC6FCEE008B7B68 /* BWLSpareFrame.m */,
 				84B770491FD03ED200BDBF31 /* BWLCommonFrame.h */,
 				84B7704A1FD03ED200BDBF31 /* BWLCommonFrame.m */,
+				84B770511FD944D300BDBF31 /* BWLWinnerOfGame.h */,
+				84B770521FD944D300BDBF31 /* BWLWinnerOfGame.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,7 +194,6 @@
 		8489F60E1FBDD44E005156ED /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				842E55E51FBB4EC300F469D2 /* BWLResultController_BWLExtension.h */,
 				842E55E61FBB4EC300F469D2 /* BWLResultController.h */,
 				842E55E01FBB4EC200F469D2 /* BWLResultController.m */,
 				842E55CA1FBB4E8100F469D2 /* BWLGameController.h */,
@@ -399,6 +402,7 @@
 				844456C61FC6CF8200048C50 /* CustomCellForResult.m in Sources */,
 				84B7704B1FD03ED200BDBF31 /* BWLCommonFrame.m in Sources */,
 				8463C4841FC6FCEE008B7B68 /* BWLSpareFrame.m in Sources */,
+				84B770531FD944D300BDBF31 /* BWLWinnerOfGame.m in Sources */,
 				847C9CCD1FC5910600393001 /* CustomCellForTextField.m in Sources */,
 				842E55C91FBB4E8100F469D2 /* AppDelegate.m in Sources */,
 			);

@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MapKit/MapKit.h"
+#import "BWLWinnerOfGame.h"
 @interface BWLRegistrationController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic ,strong)id<MKAnnotation> annotation;
+@property (nonatomic ,strong)BWLWinnerOfGame *winner;
 @end

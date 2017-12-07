@@ -64,9 +64,7 @@ const static int kTrailingOffset = 0;
 - (void)addPlayerViewController:(BWLScoreCard *)scoreCard isLastView:(BOOL)isLastView{
     BWLPlayerViewController *playerController = [[BWLPlayerViewController alloc]initWithPlayer:scoreCard andFinishBlock:^{
         if ([self isGameEnd]) {
-            BWLResultController *resultViewController = [[BWLResultController alloc]initWithScoreCards:self.playersCards];
-            [resultViewController setTitle:self.title];
-            [self.navigationController pushViewController:resultViewController animated:YES];
+            [self presentResultViewController];
         }
     }];
     [self.gameScrollView addSubview:playerController.view];
@@ -79,8 +77,11 @@ const static int kTrailingOffset = 0;
     [playerController fillPlayerViewController];
     [self.playersGames addObject:playerController];
     UILabel  *nameOfPlayer = [self createLabelForPlayerViewController:playerController withScoreCard:scoreCard];
-    
-    
+}
+
+- (void)presentResultViewController {
+    BWLResultController *resultViewController = [[BWLResultController alloc]initWithScoreCards:self.playersCards winner:self.winner andAnnotation:self.annotation];
+    [self.navigationController pushViewController:resultViewController animated:YES];
 }
 
 - (BOOL)isGameEnd {

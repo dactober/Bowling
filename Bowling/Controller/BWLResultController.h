@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MapKit/MapKit.h"
+#import "BWLWinnerOfGame.h"
 @interface BWLResultController : UITableViewController <UITableViewDelegate,UITableViewDataSource>
-- (id)initWithScoreCards:(NSArray *)playersCards;
+- (id)initWithScoreCards:(NSArray *)playersCards winner:(BWLWinnerOfGame *)winner andAnnotation:(id<MKAnnotation>)annotation;
+
 @end

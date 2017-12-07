@@ -7,27 +7,48 @@
 //
 
 #import "BWLResultController.h"
-#import "BWLResultController_BWLExtension.h"
 #import "CustomCellForResult.h"
 #import "BWLScoreCard.h"
+#import "BWLMapViewController.h"
 @interface BWLResultController ()
-@property (nonatomic, strong)NSArray *playersCards;
+@property (nonatomic, strong) NSArray *playersCards;
+@property (nonatomic, strong) NSString *nameOfWinner;
+@property (nonatomic) NSInteger maxScore;
+@property (nonatomic ,strong)id<MKAnnotation> annotation;
+@property (nonatomic ,strong)BWLWinnerOfGame *winnerOfGame;
 @end
 
 @implementation BWLResultController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"CustomCellForResult" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"ResultID"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.navigationItem.hidesBackButton = YES;
+    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back to main screen" style:UIBarButtonItemStylePlain target:self action:@selector(buttonPress)];
+    self.navigationItem.leftBarButtonItem = backButtonItem;
 }
 
-- (id)initWithScoreCards:(NSArray *)playersCards {
+- (void)buttonPress {
+    self.winnerOfGame.name = self.nameOfWinner;
+    self.winnerOfGame.score = @(self.maxScore);
+    [self postNotificationWithWinner:self.winnerOfGame andLocation:self.annotation];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)postNotificationWithWinner:(BWLWinnerOfGame *)winnerOfGame andLocation:(id<MKAnnotation>)annotation //post notification method and logic
+{
+    NSString *notificationName = kEndGame;
+    NSDictionary *dictionary = @{kWinner : winnerOfGame,
+                                kLocation : annotation};
+    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:dictionary];
+}
+
+- (id)initWithScoreCards:(NSArray *)playersCards winner:(BWLWinnerOfGame *)winner andAnnotation:(id<MKAnnotation>)annotation {
     self = [super init];
     if (self) {
         self.playersCards = playersCards;
+        self.annotation = annotation;
+        self.winnerOfGame = winner;
     }
     return self;
 }
@@ -46,6 +67,10 @@
     BWLScoreCard *scoreCard = self.playersCards[indexPath.row];
     cell.title.text = scoreCard.playerName;
     cell.score.text = [NSString stringWithFormat:@"%ld",(long)scoreCard.score];
+    if (scoreCard.score > self.maxScore) {
+        self.nameOfWinner = scoreCard.playerName;
+        self.maxScore = scoreCard.score;
+    }
     return cell;
 }
 

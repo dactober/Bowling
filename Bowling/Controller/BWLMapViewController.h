@@ -8,5 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MapKit/MapKit.h"
+
+static NSString * const kWinner = @"winner";
+static NSString * const kLocation = @"location";
+static NSString * const kEndGame = @"GameEndNotification";
 @interface BWLMapViewController : UIViewController <MKMapViewDelegate>
+
 @end
