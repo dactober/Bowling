@@ -10,12 +10,13 @@
 #import "CustomCellForResult.h"
 #import "BWLScoreCard.h"
 #import "BWLMapViewController.h"
+#import "NotificationConstants.h"
 @interface BWLResultController ()
 @property (nonatomic, strong) NSArray *playersCards;
 @property (nonatomic, strong) NSString *nameOfWinner;
 @property (nonatomic) NSInteger maxScore;
-@property (nonatomic ,strong)id<MKAnnotation> annotation;
-@property (nonatomic ,strong)BWLWinnerOfGame *winnerOfGame;
+@property (nonatomic, strong) id<MKAnnotation> annotation;
+@property (nonatomic, strong) BWLWinnerOfGame *winnerOfGame;
 @end
 
 @implementation BWLResultController
@@ -24,23 +25,21 @@
     UINib *nib = [UINib nibWithNibName:@"CustomCellForResult" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"ResultID"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back to main screen" style:UIBarButtonItemStylePlain target:self action:@selector(buttonPress)];
+    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back to main screen" style:UIBarButtonItemStylePlain target:self action:@selector(returnToMainScreenButtonPressed)];
     self.navigationItem.leftBarButtonItem = backButtonItem;
 }
 
-- (void)buttonPress {
+- (void)returnToMainScreenButtonPressed {
     self.winnerOfGame.name = self.nameOfWinner;
     self.winnerOfGame.score = @(self.maxScore);
     [self postNotificationWithWinner:self.winnerOfGame andLocation:self.annotation];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)postNotificationWithWinner:(BWLWinnerOfGame *)winnerOfGame andLocation:(id<MKAnnotation>)annotation //post notification method and logic
-{
-    NSString *notificationName = kEndGame;
+- (void)postNotificationWithWinner:(BWLWinnerOfGame *)winnerOfGame andLocation:(id<MKAnnotation>)annotation {
     NSDictionary *dictionary = @{kWinner : winnerOfGame,
                                 kLocation : annotation};
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:dictionary];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kEndGameNotification object:nil userInfo:dictionary];
 }
 
 - (id)initWithScoreCards:(NSArray *)playersCards winner:(BWLWinnerOfGame *)winner andAnnotation:(id<MKAnnotation>)annotation {

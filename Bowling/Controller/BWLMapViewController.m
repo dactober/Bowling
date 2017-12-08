@@ -10,27 +10,40 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BWLRegistrationController.h"
 #import "BWLWinnerOfGame.h"
+#import "NotificationConstants.h"
 @interface BWLMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, id<MKAnnotation>> *annotationMapping;
 @property (nonatomic) NSInteger buttonTag;
-@property (nonatomic, strong) NSMutableArray <NSData *> *winners;
+@property (nonatomic, strong) NSArray <BWLWinnerOfGame *> *winners;
+@property (nonatomic, strong) BWLFileManagerHelper *fileManegerHelper;
 @end
 
 @implementation BWLMapViewController
+
 static const int kLastTwoPins = 3;
 static const int kCountOfPin = 2;
+static NSString * const kPinImage = @"myPinImage";
+static NSString * const kWinnerPinImage = @"winnerPinImage";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.winners = [NSMutableArray new];
     self.annotationMapping = [NSMutableDictionary new];
+    self.fileManegerHelper = [[BWLFileManagerHelper alloc] init];
     self.mapView.delegate = self;
     [self setLocationManager];
     UILongPressGestureRecognizer *longPressGestureRecognizer = [self createLongPressGestureRecognizer];
     [self.mapView addGestureRecognizer:longPressGestureRecognizer];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didEndGameNotification:) name:kEndGame object:nil];
-    [self loadObjects];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didEndGameNotification:) name:kEndGameNotification object:nil];
+    self.winners = self.fileManegerHelper.winners;
+    [self addWinnersAnnotations];
+}
+
+- (void)addWinnersAnnotations {
+    for (BWLWinnerOfGame *winner in self.winners) {
+        MKPointAnnotation *annotation = [self createAnnotationForWinner:winner];
+        [self.mapView addAnnotation:annotation];
+    }
 }
 
 -(void)setLocationManager {
@@ -40,13 +53,26 @@ static const int kCountOfPin = 2;
     }
 }
 
+- (UILongPressGestureRecognizer *)createLongPressGestureRecognizer {
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPressGestureRecognizer.minimumPressDuration = 1.0;
+    return longPressGestureRecognizer;
+}
+
 - (void)didEndGameNotification:(NSNotification *)notification {
     NSDictionary *dictionary = [notification userInfo];
     BWLWinnerOfGame *winner = dictionary[kWinner];
     id<MKAnnotation> annotation = dictionary[kLocation];
     MKPointAnnotation *pointAnnotation = [self createAnnotationForWinner:winner];
-    [self saveObject:winner];
+    if ([self.fileManegerHelper addWinner:winner]) {
+        self.winners = self.fileManegerHelper.winners;
+    }
     [self.mapView removeAnnotation:annotation];
+    [self removeAnnotationFromMapping:annotation];
+    [self.mapView addAnnotation:pointAnnotation];
+}
+
+- (void)removeAnnotationFromMapping:(id<MKAnnotation>)annotation {
     NSDictionary *annotationDictionary = [self.annotationMapping copy];
     for (NSNumber* key in annotationDictionary) {
         if ([annotationDictionary[key] isEqual:annotation]) {
@@ -55,28 +81,6 @@ static const int kCountOfPin = 2;
     }
     NSArray *keys = [self.annotationMapping allKeys];
     self.buttonTag = [[keys lastObject] integerValue] + 1;
-    [self.mapView addAnnotation:pointAnnotation];
-}
-
-- (void)saveObject:(BWLWinnerOfGame *)winner {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:winner];//another class
-    [self.winners addObject:data];
-    NSArray *array = [self.winners copy];
-    [defaults setObject:array forKey:kWinner];
-    [defaults synchronize];
-}
-
-- (void)loadObjects {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //[defaults removeObjectForKey:@"winner"];
-    NSArray *array = [defaults objectForKey:kWinner];
-    self.winners = [array mutableCopy];
-    for (NSData *data in array) {
-        BWLWinnerOfGame *winner = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        MKPointAnnotation *annotation = [self createAnnotationForWinner:winner];
-        [self.mapView addAnnotation:annotation];
-    }
 }
 
 - (MKPointAnnotation *)createAnnotationForWinner:(BWLWinnerOfGame *)winner {
@@ -89,13 +93,6 @@ static const int kCountOfPin = 2;
     annotation.subtitle = score;
     annotation.coordinate = coordinate;
     return annotation;
-}
-
-- (UILongPressGestureRecognizer *)createLongPressGestureRecognizer {
-    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc]
-                                                                initWithTarget:self action:@selector(handleLongPress:)];
-    longPressGestureRecognizer.minimumPressDuration = 1.0;
-    return longPressGestureRecognizer;
 }
 
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer {
@@ -130,11 +127,10 @@ static const int kCountOfPin = 2;
             pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
         }
         [self configureAnnotationView:pinView withAnnotation:annotation];
-        
     } else {
         pinView = [[MKAnnotationView alloc] initWithAnnotation:mapView.userLocation reuseIdentifier:defaultPinID];
         pinView.canShowCallout = YES;
-        pinView.image = [UIImage imageNamed:@"myPinImage"];
+        pinView.image = [UIImage imageNamed:kPinImage];
         [mapView.userLocation setTitle:@"I am here"];
     }
     return pinView;
@@ -142,25 +138,24 @@ static const int kCountOfPin = 2;
 
 - (void)configureAnnotationView:(MKAnnotationView *)pinView withAnnotation:(id<MKAnnotation>)annotation {
     pinView.canShowCallout = YES;
-    pinView.image = [UIImage imageNamed:@"myPinImage"];
-    BOOL isWinner = NO;
-    if (self.winners.count != 0) {
-        for (NSData *data in self.winners) {
-            if (data != nil) {
-                BWLWinnerOfGame *winner = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-                if ([winner.longitude floatValue] == annotation.coordinate.longitude && [winner.latitude floatValue] == annotation.coordinate.latitude) {
-                    isWinner = YES;
-                    break;
-                }
-            }
-        }
-        if (!isWinner) {
+    if (![self isWinner:annotation]) {
+            pinView.image = [UIImage imageNamed:kPinImage];
             [self configureCallOutForAnnotationView:pinView withAnnotation:annotation];
-        }
     } else {
-        [self configureCallOutForAnnotationView:pinView withAnnotation:annotation];
+        pinView.image = [UIImage imageNamed:kWinnerPinImage];
     }
     [self removePinFromMap];
+}
+
+- (BOOL)isWinner:(id<MKAnnotation>)annotation {
+    for (BWLWinnerOfGame *winner in self.winners) {
+        CLLocationCoordinate2D coordinateOfWinner = CLLocationCoordinate2DMake([winner.latitude floatValue], [winner.longitude floatValue]);
+        CLLocationCoordinate2D coordinateOfAnnotation = CLLocationCoordinate2DMake(annotation.coordinate.latitude, annotation.coordinate.longitude);
+        if (coordinateOfWinner.latitude == coordinateOfAnnotation.latitude && coordinateOfWinner.longitude == coordinateOfAnnotation.longitude) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 - (void)removePinFromMap {

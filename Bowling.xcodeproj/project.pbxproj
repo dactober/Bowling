@@ -21,6 +21,7 @@
 		842E55EC1FBB4EC400F469D2 /* BWLScoreCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E21FBB4EC300F469D2 /* BWLScoreCard.m */; };
 		842E55ED1FBB4EC400F469D2 /* BWLFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E31FBB4EC300F469D2 /* BWLFrame.m */; };
 		842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E81FBB4EC300F469D2 /* BWLGameScore.m */; };
+		843DDFC91FDAF07000D55342 /* WinnersPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 843DDFC81FDAF07000D55342 /* WinnersPropertyList.plist */; };
 		844456C61FC6CF8200048C50 /* CustomCellForResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 844456C41FC6CF8200048C50 /* CustomCellForResult.m */; };
 		844456C71FC6CF8200048C50 /* CustomCellForResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844456C51FC6CF8200048C50 /* CustomCellForResult.xib */; };
 		8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458A5281FBC351600EE164F /* BWLScoreGridView.m */; };
@@ -30,6 +31,7 @@
 		8463C4841FC6FCEE008B7B68 /* BWLSpareFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463C4831FC6FCEE008B7B68 /* BWLSpareFrame.m */; };
 		846847001FC8130E00C0B630 /* BWLPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846846FF1FC8130E00C0B630 /* BWLPlayerViewController.m */; };
 		846A84421FC4799E00AB67F6 /* BWLButtonsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */; };
+		847845551FD9A215006B9038 /* BWLFileManagerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 847845541FD9A215006B9038 /* BWLFileManagerHelper.m */; };
 		847C9CC91FC57C3900393001 /* BWLRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C9CC81FC57C3900393001 /* BWLRegistrationController.m */; };
 		847C9CCD1FC5910600393001 /* CustomCellForTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C9CCB1FC5910600393001 /* CustomCellForTextField.m */; };
 		847C9CD21FC5913B00393001 /* CustomCellForButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C9CD01FC5913B00393001 /* CustomCellForButton.m */; };
@@ -68,6 +70,8 @@
 		842E55E71FBB4EC300F469D2 /* BWLFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLFrameView.h; sourceTree = "<group>"; };
 		842E55E81FBB4EC300F469D2 /* BWLGameScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWLGameScore.m; sourceTree = "<group>"; };
 		842E55E91FBB4EC300F469D2 /* BWLGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLGameScore.h; sourceTree = "<group>"; };
+		843DDFC81FDAF07000D55342 /* WinnersPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WinnersPropertyList.plist; sourceTree = "<group>"; };
+		843DDFCA1FDAF11F00D55342 /* NotificationConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationConstants.h; sourceTree = "<group>"; };
 		844456C31FC6CF8200048C50 /* CustomCellForResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCellForResult.h; sourceTree = "<group>"; };
 		844456C41FC6CF8200048C50 /* CustomCellForResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCellForResult.m; sourceTree = "<group>"; };
 		844456C51FC6CF8200048C50 /* CustomCellForResult.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellForResult.xib; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 		846846FF1FC8130E00C0B630 /* BWLPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLPlayerViewController.m; sourceTree = "<group>"; };
 		846A84401FC4799E00AB67F6 /* BWLButtonsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLButtonsComponent.h; sourceTree = "<group>"; };
 		846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLButtonsComponent.m; sourceTree = "<group>"; };
+		847845531FD9A215006B9038 /* BWLFileManagerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLFileManagerHelper.h; sourceTree = "<group>"; };
+		847845541FD9A215006B9038 /* BWLFileManagerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLFileManagerHelper.m; sourceTree = "<group>"; };
 		847C9CC71FC57C3900393001 /* BWLRegistrationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWLRegistrationController.h; sourceTree = "<group>"; };
 		847C9CC81FC57C3900393001 /* BWLRegistrationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWLRegistrationController.m; sourceTree = "<group>"; };
 		847C9CCA1FC5910600393001 /* CustomCellForTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCellForTextField.h; sourceTree = "<group>"; };
@@ -155,6 +161,10 @@
 				8488415B1FC426530030525F /* BWLBottomButonsComponent.m */,
 				846A84401FC4799E00AB67F6 /* BWLButtonsComponent.h */,
 				846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */,
+				847845531FD9A215006B9038 /* BWLFileManagerHelper.h */,
+				847845541FD9A215006B9038 /* BWLFileManagerHelper.m */,
+				843DDFC81FDAF07000D55342 /* WinnersPropertyList.plist */,
+				843DDFCA1FDAF11F00D55342 /* NotificationConstants.h */,
 			);
 			path = Bowling;
 			sourceTree = "<group>";
@@ -317,6 +327,7 @@
 				844456C71FC6CF8200048C50 /* CustomCellForResult.xib in Resources */,
 				842E55D11FBB4E8100F469D2 /* Assets.xcassets in Resources */,
 				842E55CF1FBB4E8100F469D2 /* Main.storyboard in Resources */,
+				843DDFC91FDAF07000D55342 /* WinnersPropertyList.plist in Resources */,
 				8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */,
 				84263DAD1FBC969600337D86 /* BWLScoreGridResultView.xib in Resources */,
 			);
@@ -385,6 +396,7 @@
 				842E55EC1FBB4EC400F469D2 /* BWLScoreCard.m in Sources */,
 				8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */,
 				8488415C1FC426530030525F /* BWLBottomButonsComponent.m in Sources */,
+				847845551FD9A215006B9038 /* BWLFileManagerHelper.m in Sources */,
 				84263DB01FBC9C5B00337D86 /* BWLScoreGridResultView.m in Sources */,
 				842E55EB1FBB4EC400F469D2 /* BWLResultController.m in Sources */,
 				842E55EA1FBB4EC400F469D2 /* BWLFrameView.m in Sources */,
