@@ -11,11 +11,11 @@
 @interface BWLScoreCard : NSObject
 @property (nonatomic,copy)NSString* playerName;
 @property (nonatomic)NSInteger score;
+@property (strong, nonatomic)BWLGameScore *gameScore;
 + (NSString*)title;
 - (void)setPlayerName:(NSString *)name;
 - (void)addScore:(NSInteger)score;
 - (void)printScore;
 - (id)initWithName:(NSString*)name;
-@property (strong, nonatomic)BWLGameScore *gameScore;
-- (BowlingFrameType)updateGameScore:(NSInteger)score withIndex:(NSInteger)index andBlock:(void(^)(NSInteger, NSInteger))block;
+- (BowlingFrameType)updateGameScore:(NSInteger)score withIndex:(NSInteger)index block:(void(^)(NSInteger, NSInteger))block;
 @end

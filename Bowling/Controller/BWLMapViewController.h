@@ -12,5 +12,4 @@
 
 
 @interface BWLMapViewController : UIViewController <MKMapViewDelegate>
-
 @end

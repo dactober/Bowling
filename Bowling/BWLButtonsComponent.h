@@ -15,5 +15,5 @@
 - (id)initWithContainerView:(UIView *)containerView titles:(NSArray *)titles withBlock:(void (^)(UIButton *))callbackBlock;
 - (void)addBWLButtons;
 - (BWLScoreInputView *)createScoreInputViewWithTitle:(NSString *)title isLastItem:(BOOL)isLastItem;
-- (void)addConstraintBetweenViews:(BWLScoreInputView *)firstView andView:(BWLScoreInputView *)secondView isLastItem:(BOOL)isLastItem;
+- (void)addConstraintBetweenView:(BWLScoreInputView *)firstView andView:(BWLScoreInputView *)secondView isLastItem:(BOOL)isLastItem;
 @end

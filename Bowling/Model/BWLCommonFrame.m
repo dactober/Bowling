@@ -34,7 +34,6 @@ static int const kFrameAttemp = 1;
             return BowlingFrameSpare;
         }
     }
-    
     return BowlingFrameStrike;
 }
 

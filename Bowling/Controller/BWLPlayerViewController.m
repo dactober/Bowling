@@ -36,13 +36,13 @@ typedef void (^FinishBlock)(void);
 const static int kGridCount = 10;
 const static int kLastGridIndex = kGridCount - 1;
 const static int kSpare = 10;
+
 - (id)initWithPlayer:(BWLScoreCard *)card andFinishBlock:(void (^)(void))finishBlock{
     self = [super init];
     if (self) {
         self.playerCard = card;
         
         [self customInitWithBlock:finishBlock];
-        
     }
     return self;
 }
@@ -147,7 +147,7 @@ const static int kSpare = 10;
 }
 
 - (void)fillScore:(NSInteger)score toGridView:(BWLScoreGridView *)grid {
-    BowlingFrameType type =  [self.playerCard updateGameScore:score  withIndex:self.index andBlock:^(NSInteger score, NSInteger index) {
+    BowlingFrameType type =  [self.playerCard updateGameScore:score  withIndex:self.index block:^(NSInteger score, NSInteger index) {
         [self fillResult:score index:index];
     }];
     if (type == BowlingFrameStrike) {
@@ -165,7 +165,7 @@ const static int kSpare = 10;
 }
 
 - (void)fillScore:(NSInteger)score toGridResultView:(BWLScoreGridResultView *)grid {
-    BowlingFrameType type =  [self.playerCard updateGameScore:score  withIndex:self.index andBlock:^(NSInteger score, NSInteger index) {
+    BowlingFrameType type =  [self.playerCard updateGameScore:score  withIndex:self.index block:^(NSInteger score, NSInteger index) {
         [self fillResultForGridResult:score index:index];
     }];
     if (type == BowlingFrameStrike) {

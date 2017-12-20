@@ -12,5 +12,5 @@
 
 @interface BWLGameScore : NSObject
 @property (nonatomic) NSInteger score;
-- (BowlingFrameType)addBowlingFrameWithScore:(NSInteger)score index:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block;
+- (BowlingFrameType)addBowlingFrameWithScore:(NSInteger)score index:(NSInteger)index block:(void (^)(NSInteger, NSInteger))block;
 @end

@@ -70,15 +70,15 @@ enum RowType {
 }
 
 - (CustomCellForTextField *)createCellForTextField:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath {
-        CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[@(RowTypeTextField)]  forIndexPath:indexPath];
-        [self setActionBlockForTextField:cell andindexPath:indexPath];
-        return cell;
+    CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[@(RowTypeTextField)]  forIndexPath:indexPath];
+    [self setActionBlockForTextField:cell andindexPath:indexPath];
+    return cell;
 }
 
 - (CustomCellForTextField *)createCellForPlayer:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath {
     CustomCellForTextField *cell = (CustomCellForTextField *)[tableView dequeueReusableCellWithIdentifier:self.rowTypeMapping[@(RowTypeTextField)] forIndexPath:indexPath];
     BWLScoreCard *scoreCard = self.playersCards[indexPath.row];
-    cell.textField.text = [NSString stringWithFormat:@"%@",scoreCard.playerName] ;
+    cell.textField.text = [NSString stringWithFormat:@"%@",scoreCard.playerName];
     return cell;
 }
 
@@ -90,11 +90,11 @@ enum RowType {
 }
 
 - (void)setActionBlockForTextField:(CustomCellForTextField *)cell andindexPath:(NSIndexPath *)indexPath{
-        __weak typeof(self) _self_weak = self;
-        [cell setTextEditingActionBlock:^(NSString *text){
-            NSIndexPath *indexPathForNextRow = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0];
-            [_self_weak enableButton:indexPathForNextRow textLenght:text.length];
-        }];
+    __weak typeof(self) _self_weak = self;
+    [cell setTextEditingActionBlock:^(NSString *text){
+        NSIndexPath *indexPathForNextRow = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0];
+        [_self_weak enableButton:indexPathForNextRow textLenght:text.length];
+    }];
 }
 
 - (void)setActionBlockForButton:(CustomCellForButton *)cell andindexPath:(NSIndexPath *)indexPath {

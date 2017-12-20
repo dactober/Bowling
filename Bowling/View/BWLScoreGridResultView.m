@@ -40,7 +40,7 @@
 }
 
 - (void)setFirstAttemptScore:(NSInteger)score {
-        self.firstAttemp.text = [self stringWithInteger:score];
+    self.firstAttemp.text = [self stringWithInteger:score];
 }
 
 - (void)setSecondAttemptScore:(NSInteger)score {

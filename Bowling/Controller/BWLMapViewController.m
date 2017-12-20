@@ -11,6 +11,8 @@
 #import "BWLRegistrationController.h"
 #import "BWLWinnerOfGame.h"
 #import "NotificationConstants.h"
+
+
 @interface BWLMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, id<MKAnnotation>> *annotationMapping;
@@ -29,14 +31,25 @@ static NSString * const kWinnerPinImage = @"winnerPinImage";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.annotationMapping = [NSMutableDictionary new];
-    self.fileManegerHelper = [[BWLFileManagerHelper alloc] init];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        self.fileManegerHelper = [[BWLFileManagerHelper alloc] init];
+        self.winners = self.fileManegerHelper.winners;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self addWinnersAnnotations];
+        });
+    });
     self.mapView.delegate = self;
     [self setLocationManager];
     UILongPressGestureRecognizer *longPressGestureRecognizer = [self createLongPressGestureRecognizer];
     [self.mapView addGestureRecognizer:longPressGestureRecognizer];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didEndGameNotification:) name:kEndGameNotification object:nil];
-    self.winners = self.fileManegerHelper.winners;
-    [self addWinnersAnnotations];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"winners"]) {
+        self.winners = self.fileManegerHelper.winners;
+        [object removeObserver:self forKeyPath:@"winners"];
+    }
 }
 
 - (void)addWinnersAnnotations {
@@ -64,12 +77,15 @@ static NSString * const kWinnerPinImage = @"winnerPinImage";
     BWLWinnerOfGame *winner = dictionary[kWinner];
     id<MKAnnotation> annotation = dictionary[kLocation];
     MKPointAnnotation *pointAnnotation = [self createAnnotationForWinner:winner];
-    if ([self.fileManegerHelper addWinner:winner]) {
-        self.winners = self.fileManegerHelper.winners;
-    }
+    [self.fileManegerHelper addObserver:self forKeyPath:@"winners" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self.fileManegerHelper addWinner:winner];
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [self.mapView addAnnotation:pointAnnotation];
+        });
+    });
     [self.mapView removeAnnotation:annotation];
     [self removeAnnotationFromMapping:annotation];
-    [self.mapView addAnnotation:pointAnnotation];
 }
 
 - (void)removeAnnotationFromMapping:(id<MKAnnotation>)annotation {
@@ -109,9 +125,7 @@ static NSString * const kWinnerPinImage = @"winnerPinImage";
 - (void)geocodeLocationWithAnnotation:(MKPointAnnotation *)annotation {
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
     CLLocation* location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-    
-    [geocoder reverseGeocodeLocation: location completionHandler:
-     ^(NSArray *placemarks, NSError *error) {
+    [geocoder reverseGeocodeLocation: location completionHandler: ^(NSArray *placemarks, NSError *error) {
          CLPlacemark *placemark = [placemarks objectAtIndex:0];
          annotation.title = placemark.locality;
          annotation.subtitle = placemark.name;
@@ -166,7 +180,7 @@ static NSString * const kWinnerPinImage = @"winnerPinImage";
     }
 }
 
-- (void)configureCallOutForAnnotationView:(MKAnnotationView *)pinView withAnnotation:(id<MKAnnotation>)annotation{
+- (void)configureCallOutForAnnotationView:(MKAnnotationView *)pinView withAnnotation:(id<MKAnnotation>)annotation {
     UIButton *advertButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [advertButton addTarget:self action:@selector(callOutButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     pinView.rightCalloutAccessoryView = advertButton;
@@ -181,7 +195,7 @@ static NSString * const kWinnerPinImage = @"winnerPinImage";
     [self presentRegistrationControllerWithNameOfPlace:nameOfPlace withAnnotation:annotation];
 }
 
-- (void)presentRegistrationControllerWithNameOfPlace:(NSString *)nameOfPlace withAnnotation:(id<MKAnnotation>)annotation{
+- (void)presentRegistrationControllerWithNameOfPlace:(NSString *)nameOfPlace withAnnotation:(id<MKAnnotation>)annotation {
     BWLWinnerOfGame *winner = [[BWLWinnerOfGame alloc]initWithLocation:annotation.coordinate];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     BWLRegistrationController *registrationController = [storyboard instantiateViewControllerWithIdentifier:@"Registration"];

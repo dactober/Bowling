@@ -18,7 +18,7 @@ static const int topOffset = 0;
 static const int leadingOffset = 5;
 static const int trailingOffset = 0;
 
-- (void)addConstraintBetweenViews:(BWLScoreInputView *)firstView andView:(BWLScoreInputView *)secondView isLastItem:(BOOL)isLastItem {
+- (void)addConstraintBetweenView:(BWLScoreInputView *)firstView andView:(BWLScoreInputView *)secondView isLastItem:(BOOL)isLastItem {
     if(secondView == nil) {
         [self topOffsetToSuperView:firstView];
         [self leadingOffsetBetween:firstView andSecondView:nil];
@@ -34,7 +34,7 @@ static const int trailingOffset = 0;
     }
 }
 
-- (void) topOffsetToSuperView:(BWLScoreInputView *)view {
+- (void)topOffsetToSuperView:(BWLScoreInputView *)view {
     [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:view
                                                                    attribute:NSLayoutAttributeTop
                                                                    relatedBy:NSLayoutRelationEqual
@@ -44,7 +44,7 @@ static const int trailingOffset = 0;
                                                                     constant:topOffset]];
 }
 
-- (void) equalHeightBetweeen:(BWLScoreInputView *)firstView andSecondView:(BWLScoreInputView *)secondView{
+- (void)equalHeightBetweeen:(BWLScoreInputView *)firstView andSecondView:(BWLScoreInputView *)secondView {
     if(secondView == nil) {
         [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:firstView
                                                                        attribute:NSLayoutAttributeHeight
@@ -65,7 +65,7 @@ static const int trailingOffset = 0;
     
 }
 
-- (void) equalWidthBetweeen:(BWLScoreInputView *)firstView andSecondView:(BWLScoreInputView *)secondView{
+- (void)equalWidthBetweeen:(BWLScoreInputView *)firstView andSecondView:(BWLScoreInputView *)secondView {
     [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:firstView
                                                                    attribute:NSLayoutAttributeWidth
                                                                    relatedBy:NSLayoutRelationEqual
@@ -75,7 +75,7 @@ static const int trailingOffset = 0;
                                                                     constant:0]];
 }
 
-- (void) leadingOffsetBetween:(BWLScoreInputView *) firstView andSecondView:(BWLScoreInputView *)secondView {
+- (void)leadingOffsetBetween:(BWLScoreInputView *) firstView andSecondView:(BWLScoreInputView *)secondView {
     if(secondView == nil){
         [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:firstView
                                                                        attribute:NSLayoutAttributeLeading
@@ -96,7 +96,7 @@ static const int trailingOffset = 0;
     
 }
 
-- (void) trailingOffsetToSuperview:(BWLScoreInputView *)view {
+- (void)trailingOffsetToSuperview:(BWLScoreInputView *)view {
     [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:view
                                                                    attribute:NSLayoutAttributeTrailing
                                                                    relatedBy:NSLayoutRelationEqual

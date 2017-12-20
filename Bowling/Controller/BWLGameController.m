@@ -20,19 +20,29 @@
 @implementation BWLGameController
 const static int kLeadingOffset = 0;
 const static int kTrailingOffset = 0;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.gameScrollView];
     [self addConstraintForScrollView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self addViews];
+    self.gameScrollView.minimumZoomScale = 1;
+    self.gameScrollView.maximumZoomScale = 4;
+    self.gameScrollView.zoomScale = 1;
+    self.gameScrollView.delegate = self;
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    BWLPlayerViewController *playerViewController = self.playersGames[0];
+    return playerViewController.view;
 }
 
 - (id)initWithScoreCards:(NSArray *)playersCards {
     self = [super init];
     if (self) {
         self.playersCards = playersCards;
-        
+
         [self customInit];
     }
     return self;
@@ -76,7 +86,7 @@ const static int kTrailingOffset = 0;
     }
     [playerController fillPlayerViewController];
     [self.playersGames addObject:playerController];
-    UILabel  *nameOfPlayer = [self createLabelForPlayerViewController:playerController withScoreCard:scoreCard];
+    [self addLabelForPlayerViewController:playerController withScoreCard:scoreCard];
 }
 
 - (void)presentResultViewController {
@@ -93,16 +103,15 @@ const static int kTrailingOffset = 0;
     return YES;
 }
 
-- (UILabel *)createLabelForPlayerViewController:(BWLPlayerViewController *)playerViewController withScoreCard:(BWLScoreCard *)scoreCard{
-   UILabel *label =  [UILabel new];
+- (void)addLabelForPlayerViewController:(BWLPlayerViewController *)playerViewController withScoreCard:(BWLScoreCard *)scoreCard {
+    UILabel *label =  [UILabel new];
     [label  setFont:[UIFont systemFontOfSize:15]];
     [self.gameScrollView addSubview:label];
     label.text = scoreCard.playerName;
     [self addConstraintForLabel:label andView:playerViewController.view];
-    return label;
 }
 
-- (void)addConstrainsBetweenPrevView:(UIView *)prevView andView:(UIView *)view isLastView:(BOOL)isLastView{
+- (void)addConstrainsBetweenPrevView:(UIView *)prevView andView:(UIView *)view isLastView:(BOOL)isLastView {
     if(prevView == nil) {
         view.keepTopInset.equal = KeepRequired(20);
         view.keepLeftInset.equal = KeepRequired(kLeadingOffset);

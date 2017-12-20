@@ -21,7 +21,6 @@
 		842E55EC1FBB4EC400F469D2 /* BWLScoreCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E21FBB4EC300F469D2 /* BWLScoreCard.m */; };
 		842E55ED1FBB4EC400F469D2 /* BWLFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E31FBB4EC300F469D2 /* BWLFrame.m */; };
 		842E55EE1FBB4EC400F469D2 /* BWLGameScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E55E81FBB4EC300F469D2 /* BWLGameScore.m */; };
-		843DDFC91FDAF07000D55342 /* WinnersPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 843DDFC81FDAF07000D55342 /* WinnersPropertyList.plist */; };
 		844456C61FC6CF8200048C50 /* CustomCellForResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 844456C41FC6CF8200048C50 /* CustomCellForResult.m */; };
 		844456C71FC6CF8200048C50 /* CustomCellForResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844456C51FC6CF8200048C50 /* CustomCellForResult.xib */; };
 		8458A5291FBC351600EE164F /* BWLScoreGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458A5281FBC351600EE164F /* BWLScoreGridView.m */; };
@@ -70,7 +69,6 @@
 		842E55E71FBB4EC300F469D2 /* BWLFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLFrameView.h; sourceTree = "<group>"; };
 		842E55E81FBB4EC300F469D2 /* BWLGameScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWLGameScore.m; sourceTree = "<group>"; };
 		842E55E91FBB4EC300F469D2 /* BWLGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWLGameScore.h; sourceTree = "<group>"; };
-		843DDFC81FDAF07000D55342 /* WinnersPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WinnersPropertyList.plist; sourceTree = "<group>"; };
 		843DDFCA1FDAF11F00D55342 /* NotificationConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationConstants.h; sourceTree = "<group>"; };
 		844456C31FC6CF8200048C50 /* CustomCellForResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCellForResult.h; sourceTree = "<group>"; };
 		844456C41FC6CF8200048C50 /* CustomCellForResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCellForResult.m; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				846A84411FC4799E00AB67F6 /* BWLButtonsComponent.m */,
 				847845531FD9A215006B9038 /* BWLFileManagerHelper.h */,
 				847845541FD9A215006B9038 /* BWLFileManagerHelper.m */,
-				843DDFC81FDAF07000D55342 /* WinnersPropertyList.plist */,
 				843DDFCA1FDAF11F00D55342 /* NotificationConstants.h */,
 			);
 			path = Bowling;
@@ -327,7 +324,6 @@
 				844456C71FC6CF8200048C50 /* CustomCellForResult.xib in Resources */,
 				842E55D11FBB4E8100F469D2 /* Assets.xcassets in Resources */,
 				842E55CF1FBB4E8100F469D2 /* Main.storyboard in Resources */,
-				843DDFC91FDAF07000D55342 /* WinnersPropertyList.plist in Resources */,
 				8463ABDA1FBC48D000D969BC /* BWLScoreGridViewXIB.xib in Resources */,
 				84263DAD1FBC969600337D86 /* BWLScoreGridResultView.xib in Resources */,
 			);

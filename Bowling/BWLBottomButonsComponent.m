@@ -19,7 +19,7 @@ static const int topOffset = 0;
 static const int trailingOffset = 40;
 static const int leftOfssetToView = 10;
 
-- (void)addConstraintBetweenViews:(BWLScoreInputView *)firstView andView:(BWLScoreInputView *)secondView isLastItem:(BOOL)isLastItem {
+- (void)addConstraintBetweenView:(BWLScoreInputView *)firstView andView:(BWLScoreInputView *)secondView isLastItem:(BOOL)isLastItem {
     if(secondView == nil) {
         firstView.keepLeftInset.equal = KeepRequired(leadingOffset);
         firstView.keepTopInset.equal = KeepRequired(topOffset);

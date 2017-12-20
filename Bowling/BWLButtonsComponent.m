@@ -43,12 +43,11 @@ typedef void (^ScoreInputAction)(UIButton *);
     [myButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.containerView addSubview:myButton];
     [self.buttons addObject:myButton];
-    [self addConstraintBetweenViews:myButton andView:prevButton isLastItem:isLastItem];
+    [self addConstraintBetweenView:myButton andView:prevButton isLastItem:isLastItem];
     return myButton;
 }
  
-- (void)addConstraintBetweenViews:(BWLScoreInputView *)firstView andView:(BWLScoreInputView *)secondView isLastItem:(BOOL)isLastItem {
-    
+- (void)addConstraintBetweenView:(BWLScoreInputView *)firstView andView:(BWLScoreInputView *)secondView isLastItem:(BOOL)isLastItem {
 }
 
 @end

@@ -36,7 +36,7 @@
     return self;
 }
 
-- (BowlingFrameType)updateGameScore:(NSInteger)score withIndex:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block {
-        return [self.gameScore addBowlingFrameWithScore:score index:index andBlock:block];
+- (BowlingFrameType)updateGameScore:(NSInteger)score withIndex:(NSInteger)index block:(void (^)(NSInteger, NSInteger))block {
+        return [self.gameScore addBowlingFrameWithScore:score index:index block:block];
 }
 @end

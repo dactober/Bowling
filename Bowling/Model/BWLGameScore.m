@@ -31,7 +31,7 @@ static int const kLastFrameAttemp = kLastAttemp - 1;
     return self;
 }
 
-- (BowlingFrameType)addBowlingFrameWithScore:(NSInteger)score index:(NSInteger)index andBlock:(void (^)(NSInteger, NSInteger))block {
+- (BowlingFrameType)addBowlingFrameWithScore:(NSInteger)score index:(NSInteger)index block:(void (^)(NSInteger, NSInteger))block {
     BOOL isSpare = NO;
     NSArray *strikeList = [NSArray arrayWithArray:self.currentStrikeSequence];
     NSArray *spareList = [NSArray arrayWithArray:self.curentSpareSequence];

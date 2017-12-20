@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MapKit/MapKit.h"
 #import "BWLWinnerOfGame.h"
-@interface BWLGameController : UIViewController
+@interface BWLGameController : UIViewController <UIScrollViewDelegate>
 - (id)initWithScoreCards:(NSArray *)playersCards;
 @property (nonatomic ,strong)id<MKAnnotation> annotation;
 @property (nonatomic ,strong)BWLWinnerOfGame *winner;

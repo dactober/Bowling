@@ -13,5 +13,5 @@
 @property (nonatomic, strong) NSNumber *score;
 @property (nonatomic, strong) NSNumber *longitude;
 @property (nonatomic, strong) NSNumber *latitude;
--(id)initWithLocation:(CLLocationCoordinate2D)location;
+- (id)initWithLocation:(CLLocationCoordinate2D)location;
 @end

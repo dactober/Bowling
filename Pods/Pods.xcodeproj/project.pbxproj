@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -44,11 +44,11 @@
 		51F1B0DA4F5027CCB2665FE6271DE9C6 /* Pods-Bowling-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bowling-resources.sh"; sourceTree = "<group>"; };
 		5593D6CCA86D52862B689659542C5C52 /* UIView+KeepLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+KeepLayout.h"; path = "Sources/UIView+KeepLayout.h"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		73E19F4B58DBDDBE44FA0D99544E3F59 /* libPods-Bowling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Bowling.a"; path = "libPods-Bowling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73E19F4B58DBDDBE44FA0D99544E3F59 /* libPods-Bowling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bowling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82320033E5CA0CFBF98F52F4E2CC2CD0 /* Pods-Bowling-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Bowling-acknowledgements.plist"; sourceTree = "<group>"; };
 		8762E7DA9BD085AD69BC204C49D9E1E7 /* Pods-Bowling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Bowling.debug.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		940FF4B8F4323EA9C9210A1070727D16 /* libKeepLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libKeepLayout.a; path = libKeepLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		940FF4B8F4323EA9C9210A1070727D16 /* libKeepLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKeepLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1101F6E3EA48BF1A7F5699F59DA9B5F /* KeepLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeepLayout-prefix.pch"; sourceTree = "<group>"; };
 		B9DA0FBBAE4EB1C25C8ED18C1E22B0CE /* KeepLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KeepLayout-dummy.m"; sourceTree = "<group>"; };
 		C01282AA042C63517B66E07DDBA568DD /* Pods-Bowling-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Bowling-dummy.m"; sourceTree = "<group>"; };
@@ -118,7 +118,6 @@
 				2E9B8298C52D87D49584C44DE0A989F9 /* UIView+KeepLayout.m */,
 				2AD23698AF5C0E3E60AA0124381EFB99 /* Support Files */,
 			);
-			name = KeepLayout;
 			path = KeepLayout;
 			sourceTree = "<group>";
 		};
@@ -240,7 +239,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -459,7 +458,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/KeepLayout/KeepLayout-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -480,7 +479,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/KeepLayout/KeepLayout-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";

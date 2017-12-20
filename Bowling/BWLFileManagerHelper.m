@@ -33,7 +33,7 @@ static NSString * const kPathToPlistFile = @"WinnersPropertyList";
 
 #pragma mark - Private
 - (void)loadWinners {
-    NSString *plistPath = [self getPlistPath];
+    NSString *plistPath = [self plistPath];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
     NSArray *dataList = dict[kWinner];
     if (dataList == nil) {
@@ -44,20 +44,15 @@ static NSString * const kPathToPlistFile = @"WinnersPropertyList";
 }
 
 - (BOOL)saveWinners {
-    NSString *plistPath = [self getPlistPath];
+    NSString *plistPath = [self plistPath];
     NSMutableDictionary * dict = [NSMutableDictionary new];
     dict[kWinner] = [self dataListFromWinnerList:self.winners];
     return [dict writeToFile:plistPath atomically:YES];
 }
 
-- (NSString *)getPlistPath {
-    NSError *error;
+- (NSString *)plistPath {
     NSString *documentsDirectoryPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *plistPath = [documentsDirectoryPath stringByAppendingPathComponent:kPathToPlistFile];
-    if (![[NSFileManager defaultManager] fileExistsAtPath: plistPath]) {
-        NSString *bundle = [[NSBundle mainBundle] pathForResource:kPathToPlistFile ofType:@"plist"];
-        [[NSFileManager defaultManager] copyItemAtPath:bundle toPath:plistPath error:&error];
-    }
     return plistPath;
 }
 
