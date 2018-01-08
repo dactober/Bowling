@@ -59,7 +59,7 @@ static NSString * const kWinnerPinImage = @"winnerPinImage";
     }
 }
 
--(void)setLocationManager {
+- (void)setLocationManager {
     CLLocationManager *locationManager = [[CLLocationManager alloc] init];
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationManager requestWhenInUseAuthorization];

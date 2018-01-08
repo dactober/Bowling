@@ -27,7 +27,7 @@
     [encoder encodeObject:self.latitude forKey:@"latitude"];
 }
 
--(id)initWithLocation:(CLLocationCoordinate2D)location {
+- (id)initWithLocation:(CLLocationCoordinate2D)location {
     self = [super init];
     if (self) {
         self.longitude = @(location.longitude);

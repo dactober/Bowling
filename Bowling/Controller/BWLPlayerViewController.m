@@ -173,7 +173,7 @@ const static int kSpare = 10;
             grid.score += score;
             [grid setFirstAttemptScore:score];
         } else if ([grid isEmptySecondAttempt]){
-            [grid setSecondAttemptScore:score];//
+            [grid setSecondAttemptScore:score];
         } else {
             [grid setThirdAttemptScore:score];
             [self hideContainers];
@@ -196,13 +196,13 @@ const static int kSpare = 10;
     }
 }
 
-- (void)fillResult:(NSInteger)score index:(NSInteger)index{
+- (void)fillResult:(NSInteger)score index:(NSInteger)index {
     BWLScoreGridView *grid = self.frameViews[index];
     self.playerCard.score += score;
     [grid setResultScore:self.playerCard.score];
 }
 
-- (void)fillResultForGridResult:(NSInteger)score index:(NSInteger)index{
+- (void)fillResultForGridResult:(NSInteger)score index:(NSInteger)index {
     BWLScoreGridResultView *grid = self.frameViews[index];
     self.playerCard.score += score;
     [grid setResultScore:self.playerCard.score];

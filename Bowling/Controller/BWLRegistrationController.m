@@ -89,7 +89,7 @@ enum RowType {
     return cell;
 }
 
-- (void)setActionBlockForTextField:(CustomCellForTextField *)cell andindexPath:(NSIndexPath *)indexPath{
+- (void)setActionBlockForTextField:(CustomCellForTextField *)cell andindexPath:(NSIndexPath *)indexPath {
     __weak typeof(self) _self_weak = self;
     [cell setTextEditingActionBlock:^(NSString *text){
         NSIndexPath *indexPathForNextRow = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0];

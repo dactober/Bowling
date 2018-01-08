@@ -71,7 +71,7 @@ const static int kTrailingOffset = 0;
     self.gameScrollView.keepRightInset.equal = KeepRequired(0);
 }
 
-- (void)addPlayerViewController:(BWLScoreCard *)scoreCard isLastView:(BOOL)isLastView{
+- (void)addPlayerViewController:(BWLScoreCard *)scoreCard isLastView:(BOOL)isLastView {
     BWLPlayerViewController *playerController = [[BWLPlayerViewController alloc]initWithPlayer:scoreCard andFinishBlock:^{
         if ([self isGameEnd]) {
             [self presentResultViewController];
